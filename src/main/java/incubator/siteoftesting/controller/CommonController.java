@@ -26,7 +26,6 @@ public class CommonController {
 
     @RequestMapping(value = "/index/creationt", method = RequestMethod.GET)
     public ModelAndView goToCreationTest(){
-
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("adminUI3");
         return modelAndView;
