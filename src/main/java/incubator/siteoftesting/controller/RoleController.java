@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-@RequestMapping(name = "/role")
+@RequestMapping("/role")
 public class RoleController {
 
     private RoleService roleService;

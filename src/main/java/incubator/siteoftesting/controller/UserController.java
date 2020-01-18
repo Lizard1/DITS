@@ -1,5 +1,6 @@
 package incubator.siteoftesting.controller;
 
+import incubator.siteoftesting.model.Role;
 import incubator.siteoftesting.model.User;
 import incubator.siteoftesting.model.UserForm;
 import incubator.siteoftesting.service.UserService;
@@ -15,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-@RequestMapping(name = "/user")
+@RequestMapping("/user")
 public class UserController {
 
     private UserService userService;
@@ -59,4 +60,31 @@ public class UserController {
         userService.deleteUser(user);
         return modelAndView;
     }
+
+    @RequestMapping(value = "/addnewuser", method = RequestMethod.POST)
+    public ModelAndView addUser(@ModelAttribute("DataFromForm") UserForm userForm, ModelMap model) {
+        model.addAttribute("role", userForm.getRole());
+        model.addAttribute("firstname", userForm.getName());
+        model.addAttribute("surname", userForm.getSurname());
+        model.addAttribute("patronymic", userForm.getPatronymic());
+        model.addAttribute("login", userForm.getLogIn());
+        model.addAttribute("password", userForm.getPassword());
+        model.addAttribute("email", userForm.getEmail());
+
+        ModelAndView modelAndView = new ModelAndView("adminUI4", "command", userForm);
+        modelAndView.addObject("newuser", model);
+        modelAndView.setViewName("UsersModsViews");
+
+        User user = new User();
+        user.setFirstName(userForm.getName());
+        user.setSurname(userForm.getSurname());
+        user.setLogin(userForm.getLogIn());
+        user.setPassword(userForm.getPassword());
+
+        Role role = new Role();
+        //role.set
+        userService.create(user);
+        return modelAndView;
+    }
+
 }

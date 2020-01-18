@@ -1,6 +1,6 @@
 package incubator.siteoftesting.model;
 
-public class UserForm {
+public class UserForm extends User{
     private String role;
     private String name;
     private String surname;

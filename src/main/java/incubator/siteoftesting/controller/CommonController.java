@@ -16,6 +16,8 @@ import java.util.Map;
 @RequestMapping("/common")
 public class CommonController {
 
+
+
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView hello(){
         ModelAndView modelAndView = new ModelAndView();
@@ -32,6 +34,7 @@ public class CommonController {
 
     @RequestMapping(value = "/index/creationt", method = RequestMethod.GET)
     public ModelAndView goToCreationTest(){
+       // ModelAndView modelAndView = new ModelAndView("adminUI3", "command", new UserForm());
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("adminUI3");
         return modelAndView;
@@ -68,24 +71,6 @@ public class CommonController {
     public ModelAndView goToStatEghtn(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("adminUI8");
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/index/addnewuser", method = RequestMethod.POST)
-    public ModelAndView addUser(@ModelAttribute("DataFromForm") UserForm userform, ModelMap model) {
-        UserForm userForm = new UserForm();
-        model.addAttribute("role", userForm.getRole());
-        model.addAttribute("firstname", userForm.getName());
-        model.addAttribute("surname", userForm.getSurname());
-        model.addAttribute("patronymic", userForm.getPatronymic());
-        model.addAttribute("login", userForm.getLogIn());
-        model.addAttribute("password", userForm.getPassword());
-        model.addAttribute("email", userForm.getEmail());
-
-        ModelAndView modelAndView = new ModelAndView("adminUI4", "command", userForm);
-        modelAndView.addObject("newuser", model);
-        modelAndView.setViewName("UsersModsViews");
-        //userService.create(user);
         return modelAndView;
     }
 
