@@ -3,50 +3,18 @@
 
 <head>
     <title>Spring MVC Form Handling</title>
+    <meta charset="UTF-8">
     <%@ page isELIgnored="false" %>
 </head>
 
 <body>
-<h2>Submitted User Information</h2>
-<table>
-    <tr>
-        <td>Username</td>
-        <td>${username}</td>
-    </tr>
-    <tr>
-        <td>Password</td>
-        <td>${password}</td>
-    </tr>
-    <tr>
-        <td>Address</td>
-        <td>${address}</td>
-    </tr>
-    <tr>
-        <td>Subscribed to Newsletter</td>
-        <td>${receivePaper}</td>
-    </tr>
-    <tr>
-        <td>Favorite Web Frameworks</td>
-        <td>
-            <% String[] favoriteFrameworks = (String[])request.getAttribute("favoriteFrameworks");
-                for(String framework: favoriteFrameworks) {
-                    out.println(framework);
-                }
-            %>
-        </td>
-    </tr>
-    <tr>
-        <td>Gender</td>
-        <td>${(gender=="M"? "Male" : "Female")}</td>
-    </tr>
-    <tr>
-        <td>Favourite Number</td>
-        <td>${favoriteNumber}</td>
-    </tr>
-    <tr>
-        <td>Country</td>
-        <td>${country}</td>
-    </tr>
-</table>
+
+${DataFromForm.role}
+${DataFromForm.name}
+${DataFromForm.surname}
+${DataFromForm.patronymic}
+${DataFromForm.logIn}
+${DataFromForm.password}
+${DataFromForm.email}
 </body>
 </html>

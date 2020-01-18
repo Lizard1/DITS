@@ -57,11 +57,11 @@ public class User {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public String getSurname() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setSurname(String lastName) {
         this.lastName = lastName;
     }
 

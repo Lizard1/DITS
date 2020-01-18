@@ -1,15 +1,15 @@
 package incubator.siteoftesting.controller;
 
-import incubator.siteoftesting.facmetdto.UserDTO;
 import incubator.siteoftesting.model.User;
 import incubator.siteoftesting.model.UserForm;
 import incubator.siteoftesting.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/getallusers", method = RequestMethod.GET)
-    public ModelAndView getAllUsers(){
+    public ModelAndView getAllUsers() {
         List<User> users = userService.getAllUsers();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("");
@@ -37,23 +37,9 @@ public class UserController {
     @RequestMapping(value = "/getoneuser", method = RequestMethod.GET)
     public ModelAndView getUserById(@PathVariable("id") int id) {
         User user = userService.getUserById(id);
-        ModelAndView modelAndView = new ModelAndView();k
+        ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("#");
         modelAndView.addObject("###", user);
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/addnewuser", method = RequestMethod.POST)
-    public ModelAndView addUser(@ModelAttribute("SpringWeb") User user, ModelMap model) {
-        ModelAndView modelAndView = new ModelAndView();
-        model.addAttribute("firstName");
-        model.addAttribute("surname");
-        model.addAttribute();
-        model.addAttribute();
-        model.addAttribute();
-        model.addAttribute();
-        modelAndView.setViewName("redirect:/"); ///common/index/creationu
-        userService.create(user);
         return modelAndView;
     }
 
@@ -65,7 +51,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/deleteoneuser", method = RequestMethod.GET)
+    @RequestMapping(value = "/deleteoneuser", method = RequestMethod.GET)
     public ModelAndView deleteUser(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("#");
@@ -74,5 +60,3 @@ public class UserController {
         return modelAndView;
     }
 }
-
-
