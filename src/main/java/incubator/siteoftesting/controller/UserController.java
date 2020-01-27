@@ -3,6 +3,7 @@ package incubator.siteoftesting.controller;
 import incubator.siteoftesting.model.Role;
 import incubator.siteoftesting.model.User;
 import incubator.siteoftesting.model.UserForm;
+import incubator.siteoftesting.service.RoleService;
 import incubator.siteoftesting.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -62,7 +63,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/addnewuser", method = RequestMethod.POST)
-    public ModelAndView addUser(@ModelAttribute("DataFromForm") UserForm userForm, ModelMap model) {
+    public ModelAndView addUser(@ModelAttribute("formOfUser") UserForm userForm, ModelMap model) {
         model.addAttribute("role", userForm.getRole());
         model.addAttribute("firstname", userForm.getName());
         model.addAttribute("surname", userForm.getSurname());
@@ -73,18 +74,31 @@ public class UserController {
 
         ModelAndView modelAndView = new ModelAndView("adminUI4", "command", userForm);
         modelAndView.addObject("newuser", model);
-        modelAndView.setViewName("UsersModsViews");
+        //modelAndView.setViewName("adminUI4");
 
         User user = new User();
         user.setFirstName(userForm.getName());
         user.setSurname(userForm.getSurname());
         user.setLogin(userForm.getLogIn());
         user.setPassword(userForm.getPassword());
+        user.setRoleId(setRoleId(userForm.getRole()));
+        //user.setRole(new Role(){});
 
-        Role role = new Role();
-        //role.set
         userService.create(user);
         return modelAndView;
+    }
+
+    private int setRoleId(String role){
+        int id =0;
+        if(role.toLowerCase().equals("admin")){
+            id = 1;
+        }else if(role.toLowerCase().equals("tutor")){
+            id = 2;
+        }else if(role.toLowerCase().equals("user")){
+            id = 3;
+        }
+
+        return id;
     }
 
 }
