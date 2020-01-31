@@ -3,7 +3,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%--<link href="<c:url value="/res/css/creationmenu.css"/>" rel="stylesheet" type="text/css"/>--%>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Title</title>
@@ -16,44 +15,32 @@
             <img src="/res/images/human.png">
         </div>
 
-        <form class="col-5">
+        <form:form  method="POST" action="/common/index/creationt/create" modelAttribute="crForm" class="col-5">
             <div class="form-group">
-
-                <p>
-                    <input class="form-control" type="text" required list="topics" placeholder="Выберите тему"
-                           id="topic" name="topic">
+                <p><input class="form-control" type="text" required list="topics" placeholder="Выберите тему" id="topic" name="topic">
                     <datalist id="topics" name="nameTopic">
                         <c:forEach items="${topicList}" var="topic">
                         <option value="${topic.value}">
                             </c:forEach>
-                    </datalist>
-                </p>
-                <p>
-                    <input class="form-control" type="text" required list="tests" placeholder="Выберите тест" id="test"
-                           name="topic">
+                    </datalist></p>
+                <p><input class="form-control" type="text" required list="tests" placeholder="Выберите тест" id="test" name="topic">
                     <datalist id="tests" name="nameTest">
                         <c:forEach items="${testList}" var="test">
                         <option value="${test.value}">
                             </c:forEach>
-                    </datalist>
-                </p>
-                <p>
-                    <input class="form-control" type="text" required list="questions" placeholder="Выберите вопрос"
+                    </datalist></p>
+                <p><input class="form-control" type="text" required list="questions" placeholder="Выберите вопрос"
                            id="question" name="topic">
                     <datalist id="questions" name="nameQuestion">
                         <c:forEach items="${questionList}" var="question">
                         <option value="${question.value}">
                             </c:forEach>
-                    </datalist>
-                </p>
+                    </datalist></p>
 
                 <p><input class="form-control text-white bg-primary" type="submit" name="submit" value="Сохранить"></p>
-                <p>
-                    <button class="btn text-white bg-primary" onclick='history.back()'>Назад</button>
-                </p>
-
+                <p><button class="btn text-white bg-primary" onclick='history.back()'>Назад</button></p>
             </div>
-        </form>
+        </form:form>
     </div>
 </div>
 </body>

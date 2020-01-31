@@ -16,29 +16,27 @@
         <div id="incub" class="col-5">
             <img src="/res/images/human.png">
         </div>
-        <%--action="/common/index/addnewuser"--%>
         <div class="col-5">
-            <form:form method="POST" action="/user/addnewuser" modelAttribute="formOfUser">
-                <div class="form-group">
-                    <p><form:select path="role" class="form-control bg-white text-info">
-                        <form:options items="${roleList}"/>
-                    </form:select></p>
-                    <p><form:input path="name" class="form-control bg-white text-info" type="text"
-                                   placeholder="Имя"/></p>
-                    <p><form:input path="surname" class="form-control bg-white text-info" type="text"
-                                   placeholder="Фамилия"/></p>
-                    <p><form:input path="patronymic" class="form-control bg-white text-info" type="text"
-                                   placeholder="Отчество"/></p>
-                    <p><form:input path="logIn" class="form-control bg-white text-info" type="text"
-                                   placeholder="Логин"/></p>
-                    <p><form:password path="password" class="form-control bg-white text-info"
-                                      placeholder="Пароль"/></p>
-                    <p><form:input path="email" class="form-control bg-white text-info" type="text"
-                                   placeholder="Почта"/></p>
-                    <p><input class="form-control text-white bg-primary" type="submit" value="Сохранить"/></p>
-                </div>
-            </form:form>
-
+                <form:form method="POST" action="/user/addnewuser" modelAttribute="formOfUser">
+                    <div class="form-group">
+                        <p><form:select path="role" class="form-control bg-white text-info">
+                            <form:options items="${roleList}"/>
+                        </form:select></p>
+                        <p><form:input path="firstName" class="form-control bg-white text-info" type="text"
+                                       placeholder="Имя"/></p>
+                        <p><form:input path="lastName" class="form-control bg-white text-info" type="text"
+                                       placeholder="Фамилия"/></p>
+                        <p><form:input path="patronymic" class="form-control bg-white text-info" type="text"
+                                       placeholder="Отчество"/></p>
+                        <p><form:input path="login" class="form-control bg-white text-info" type="text"
+                                       placeholder="Логин"/></p>
+                        <p><form:password path="password" class="form-control bg-white text-info"
+                                          placeholder="Пароль"/></p>
+                        <p><form:input path="email" class="form-control bg-white text-info" type="text"
+                                       placeholder="Почта"/></p>
+                        <p><input class="form-control text-white bg-primary" type="submit" value="Сохранить"/></p>
+                    </div>
+                </form:form>
         </div>
     </div>
 </div>

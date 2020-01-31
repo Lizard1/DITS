@@ -1,9 +1,7 @@
 package incubator.siteoftesting.controller;
 
-import incubator.siteoftesting.model.Role;
 import incubator.siteoftesting.model.User;
 import incubator.siteoftesting.model.UserForm;
-import incubator.siteoftesting.service.RoleService;
 import incubator.siteoftesting.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,7 +51,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/deleteoneuser", method = RequestMethod.GET)
+    @RequestMapping(value = "deleteoneuser", method = RequestMethod.GET)
     public ModelAndView deleteUser(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("#");
@@ -65,10 +63,10 @@ public class UserController {
     @RequestMapping(value = "/addnewuser", method = RequestMethod.POST)
     public ModelAndView addUser(@ModelAttribute("formOfUser") UserForm userForm, ModelMap model) {
         model.addAttribute("role", userForm.getRole());
-        model.addAttribute("firstname", userForm.getName());
-        model.addAttribute("surname", userForm.getSurname());
+        model.addAttribute("firstName", userForm.getFirstName());
+        model.addAttribute("lastName", userForm.getLastName());
         model.addAttribute("patronymic", userForm.getPatronymic());
-        model.addAttribute("login", userForm.getLogIn());
+        model.addAttribute("login", userForm.getLogin());
         model.addAttribute("password", userForm.getPassword());
         model.addAttribute("email", userForm.getEmail());
 
@@ -76,15 +74,15 @@ public class UserController {
         modelAndView.addObject("newuser", model);
         //modelAndView.setViewName("adminUI4");
 
-        User user = new User();
+      /*  User user = new User();
         user.setFirstName(userForm.getName());
-        user.setSurname(userForm.getSurname());
+        user.setLastName(userForm.getLastName());
         user.setLogin(userForm.getLogIn());
         user.setPassword(userForm.getPassword());
-        user.setRoleId(setRoleId(userForm.getRole()));
+        user.setRoleId(setRoleId(userForm.getRole()));*/
         //user.setRole(new Role(){});
 
-        userService.create(user);
+       // userService.create(user);
         return modelAndView;
     }
 
@@ -101,4 +99,27 @@ public class UserController {
         return id;
     }
 
+   /* private Role setRoleId(String role){
+        Role roleObj = new Role();
+
+        if(role.toLowerCase().equals("admin")){
+            roleObj.setUser(0);
+            roleObj.setTutor(0);
+            roleObj.setAdmin(1);
+        }else if(role.toLowerCase().equals("tutor")){
+            roleObj.setUser(0);
+            roleObj.setTutor(1);
+            roleObj.setAdmin(0);
+        }else if(role.toLowerCase().equals("user")){
+            roleObj.setUser(1);
+            roleObj.setTutor(0);
+            roleObj.setAdmin(0);
+        }
+
+        return roleObj;
+    }*/
+
 }
+
+
+

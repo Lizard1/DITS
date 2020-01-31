@@ -18,11 +18,14 @@ public class Question {
     @OneToMany(mappedBy = "question")
     private Set<Statistic> statisticsQuestions;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "testId")
+    private Test test;
+
+    public Question(){}
+
     public Question(String description) {
         this.description = description;
-    }
-
-    public Question() {
     }
 
     public int getQuestionId() {
