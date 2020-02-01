@@ -15,63 +15,37 @@
             <img src="/res/images/human.png">
         </div>
 
-        <form:form  method="POST" action="/common/index/creationt/create" modelAttribute="crForm" class="col-5">
+        <form:form method="POST" action="/common/index/creationt/create" modelAttribute="crForm" class="col-5">
             <div class="form-group">
-                <p><input class="form-control" type="text" required list="topics" placeholder="Выберите тему" id="topic" name="topic">
-                    <datalist id="topics" name="nameTopic">
-                        <c:forEach items="${topicList}" var="topic">
-                        <option value="${topic.value}">
+                <p><form:input path="topicFromCrFrom" class="form-control" type="text" list="topics" placeholder="Выберите тему"/>
+                    <datalist id="topics">
+                        <c:forEach items="${topicList}" var="topicFromCrFrom">
+                        <option value="${topicFromCrFrom.value}">
                             </c:forEach>
-                    </datalist></p>
-                <p><input class="form-control" type="text" required list="tests" placeholder="Выберите тест" id="test" name="topic">
-                    <datalist id="tests" name="nameTest">
-                        <c:forEach items="${testList}" var="test">
-                        <option value="${test.value}">
+                    </datalist>
+                </p>
+                <p><form:input path="testFromCrForm" class="form-control" type="text" list="tests" placeholder="Выберите тест"/>
+                    <datalist id="tests">
+                        <c:forEach items="${testList}" var="testFromCrForm">
+                        <option value="${testFromCrForm.value}">
                             </c:forEach>
-                    </datalist></p>
-                <p><input class="form-control" type="text" required list="questions" placeholder="Выберите вопрос"
-                           id="question" name="topic">
-                    <datalist id="questions" name="nameQuestion">
-                        <c:forEach items="${questionList}" var="question">
-                        <option value="${question.value}">
+                    </datalist>
+                </p>
+                <p><form:input path="questionFromCrForm" class="form-control" type="text" list="questions" placeholder="Выберите вопрос"/>
+                    <datalist id="questions">
+                        <c:forEach items="${questionList}" var="questionFromCrForm">
+                        <option value="${questionFromCrForm.value}">
                             </c:forEach>
-                    </datalist></p>
+                    </datalist>
+                </p>
 
                 <p><input class="form-control text-white bg-primary" type="submit" name="submit" value="Сохранить"></p>
-                <p><button class="btn text-white bg-primary" onclick='history.back()'>Назад</button></p>
+                <p>
+                    <button class="btn text-white bg-primary" onclick='history.back()'>Назад</button>
+                </p>
             </div>
         </form:form>
     </div>
 </div>
 </body>
 </html>
-
-<%--<select class="form-control" name="topic">--%>
-<%--&lt;%&ndash;<form:options items="${topicList}"/>&ndash;%&gt;--%>
-<%--<option>Название темы</option>--%>
-<%--<option selected value="1">Тема 1</option>--%>
-<%--<option value="2">Тема 2</option>--%>
-<%--<option value="3">Тема 3</option>--%>
-<%--<option value="4">Тема 4</option>--%>
-<%--</select>--%>
-<%--</p>--%>
-<%--<p>--%>
-<%--<select class="form-control" name="text">--%>
-<%--&lt;%&ndash;<form:options items="${testList}"/>&ndash;%&gt;--%>
-<%--<option>Название теста</option>--%>
-<%--<option selected value="1">Тест 1</option>--%>
-<%--<option value="2">Тест 2</option>--%>
-<%--<option value="3">Тест 3</option>--%>
-<%--<option value="4">Тест 4</option>--%>
-<%--</select>--%>
-<%--</p>--%>
-<%--<p>--%>
-<%--<select class="form-control" name="text">--%>
-<%--&lt;%&ndash;<form:options items="${questionList}"/>&ndash;%&gt;--%>
-<%--<option>Название вопросов</option>--%>
-<%--<option selected value="1">Вопрос 1</option>--%>
-<%--<option value="2">Вопрос 2</option>--%>
-<%--<option value="3">Вопрос 3</option>--%>
-<%--<option value="4">Вопрос 4</option>--%>
-<%--</select>--%>
-<%--</p>--%>

@@ -73,27 +73,25 @@ public class UserController {
 
         ModelAndView modelAndView = new ModelAndView("adminUI4", "command", userForm);
         modelAndView.addObject("newuser", model);
-        //modelAndView.setViewName("adminUI4");
 
         User user = new User();
         user.setFirstName(userForm.getFirstName());
         user.setLastName(userForm.getLastName());
         user.setLogin(userForm.getLogin());
         user.setPassword(userForm.getPassword());
-        user.setRole(setRoleId(userForm.getRoleFromForm()));
-       // userService.create(user);
+        user.setRole(setRole(userForm.getRoleFromForm()));
+        userService.create(user);
         return modelAndView;
     }
 
-    private Role setRoleId(String role){
+    private Role setRole(String role){
         Role roleForUser;
-
         if(role.toLowerCase().equals("admin")){
-            roleForUser = new Role(1, 0, 0, 1);
+            roleForUser = new Role( 0, 0, 1);
         }else if(role.toLowerCase().equals("tutor")){
-            roleForUser = new Role(2, 0, 1, 0);
+            roleForUser = new Role(0, 1, 0);
         }else{
-            roleForUser = new Role(3, 1, 0, 0);
+            roleForUser = new Role( 1, 0, 0);
         }
         return roleForUser;
     }

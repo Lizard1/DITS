@@ -24,9 +24,6 @@ public class User {
     @Column(name = "pasword")
     private String password;
 
-    /*@Column(name = "ruleId", insertable = false, updatable = false)
-    private int roleId;*/
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ruleId")
     private Role role;
@@ -91,14 +88,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    /*public int getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
-    }*/
 
     @Override
     public String toString() {

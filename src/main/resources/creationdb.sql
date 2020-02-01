@@ -36,7 +36,7 @@ CREATE TABLE Test (
     description varchar(300)  not null,
     topicId integer,
     constraint test_topic_fk
-    foreign key (topicId) references statistic_user_role.topic (topicId)
+    foreign key (topicId) references statistic_user_role.topicFromCrFrom (topicId)
 );
 
 CREATE TABLE Question (
@@ -44,7 +44,7 @@ CREATE TABLE Question (
     description varchar(300)  not null,
     testId integer,
 	constraint question_test_fk
-    foreign key (testId) references statistic_user_role.test (testId)
+    foreign key (testId) references statistic_user_role.testFromCrForm (testId)
 );
 
 CREATE TABLE Statistic (
@@ -56,7 +56,7 @@ CREATE TABLE Statistic (
 	constraint statistic_user_fk
     foreign key (userId)  references  statistic_user_role.usser (userId),
     constraint statistic_qustion_fk
-    foreign key (questionId) references statistic_user_role.question (questionId)
+    foreign key (questionId) references statistic_user_role.questionFromCrForm (questionId)
 );
 
 CREATE TABLE Literature (
@@ -64,7 +64,7 @@ CREATE TABLE Literature (
     description varchar(300)  not null,
     questionId integer,
 	constraint literature_question_fk
-    foreign key (questionId) references statistic_user_role.question (questionId)
+    foreign key (questionId) references statistic_user_role.questionFromCrForm (questionId)
 );
 
 CREATE TABLE link (
@@ -83,7 +83,7 @@ CREATE TABLE answer (
     correct boolean  not null,
     questionId integer,
     constraint answer_question_fk
-    foreign key (questionId) references statistic_user_role.question (questionId)
+    foreign key (questionId) references statistic_user_role.questionFromCrForm (questionId)
 );
 
 /*

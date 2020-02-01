@@ -74,19 +74,13 @@ public class CommonController {
 
     @RequestMapping(value = "/index/creationt/create", method = RequestMethod.POST)
     public ModelAndView getDataForCreation(@ModelAttribute("crForm") CreationForm creationForm, ModelMap model) {
-        model.addAttribute("topic", creationForm.getTopic());
-        model.addAttribute("test", creationForm.getTest());
-        model.addAttribute("question", creationForm.getQuestion());
+        model.addAttribute("topic", creationForm.getTopicFromCrFrom());
+        model.addAttribute("test", creationForm.getTestFromCrForm());
+        model.addAttribute("question", creationForm.getQuestionFromCrForm());
 
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = new ModelAndView("adminUI3", "command", creationForm);
 
-        if(creationForm.getTopic().toLowerCase().equals("1")){
-
-        }else if(creationForm.getTest().toLowerCase().equals("2")){
-
-        }else if(creationForm.getQuestion().toLowerCase().equals("3")){
-
-        }
+        CreationForm crForm = new CreationForm(creationForm.getTopicFromCrFrom(), creationForm.getTestFromCrForm(), creationForm.getQuestionFromCrForm());
 
         return modelAndView;
     }

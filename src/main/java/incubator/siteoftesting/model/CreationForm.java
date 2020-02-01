@@ -1,31 +1,40 @@
 package incubator.siteoftesting.model;
 
 public class CreationForm {
-    private String topic;
-    private String test;
-    private String question;
+    private String topicFromCrFrom;
+    private String testFromCrForm;
+    private String questionFromCrForm;
 
-    public String getTopic() {
-        return topic;
+    public CreationForm() {
     }
 
-    public void setTopic(String topic) {
-        this.topic = topic;
+    public CreationForm(String topic, String test, String question) {
+        this.topicFromCrFrom = topic;
+        this.testFromCrForm = test;
+        this.questionFromCrForm = question;
     }
 
-    public String getTest() {
-        return test;
+    public String getTopicFromCrFrom() {
+        return topicFromCrFrom;
     }
 
-    public void setTest(String test) {
-        this.test = test;
+    public void setTopicFromCrFrom(String topicFromCrFrom) {
+        this.topicFromCrFrom = topicFromCrFrom;
     }
 
-    public String getQuestion() {
-        return question;
+    public String getTestFromCrForm() {
+        return testFromCrForm;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
+    public void setTestFromCrForm(String testFromCrForm) {
+        this.testFromCrForm = testFromCrForm;
+    }
+
+    public String getQuestionFromCrForm() {
+        return questionFromCrForm;
+    }
+
+    public void setQuestionFromCrForm(String questionFromCrForm) {
+        this.questionFromCrForm = questionFromCrForm;
     }
 }
