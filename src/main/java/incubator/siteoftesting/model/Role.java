@@ -27,6 +27,13 @@ public class Role {
     public Role() {
     }
 
+    public Role(int roleId, int user, int tutor, int admin) {
+        this.roleId = roleId;
+        this.user = user;
+        this.tutor = tutor;
+        this.admin = admin;
+    }
+
     public Role(int user, int tutor, int admin, Set<User> userSet) {
         this.user = user;
         this.tutor = tutor;

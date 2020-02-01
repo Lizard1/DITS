@@ -1,5 +1,6 @@
 package incubator.siteoftesting.controller;
 
+import incubator.siteoftesting.model.Role;
 import incubator.siteoftesting.model.User;
 import incubator.siteoftesting.model.UserForm;
 import incubator.siteoftesting.service.UserService;
@@ -74,51 +75,28 @@ public class UserController {
         modelAndView.addObject("newuser", model);
         //modelAndView.setViewName("adminUI4");
 
-      /*  User user = new User();
-        user.setFirstName(userForm.getName());
+        User user = new User();
+        user.setFirstName(userForm.getFirstName());
         user.setLastName(userForm.getLastName());
-        user.setLogin(userForm.getLogIn());
+        user.setLogin(userForm.getLogin());
         user.setPassword(userForm.getPassword());
-        user.setRoleId(setRoleId(userForm.getRole()));*/
-        //user.setRole(new Role(){});
-
+        user.setRole(setRoleId(userForm.getRoleFromForm()));
        // userService.create(user);
         return modelAndView;
     }
 
-    private int setRoleId(String role){
-        int id =0;
-        if(role.toLowerCase().equals("admin")){
-            id = 1;
-        }else if(role.toLowerCase().equals("tutor")){
-            id = 2;
-        }else if(role.toLowerCase().equals("user")){
-            id = 3;
-        }
+    private Role setRoleId(String role){
+        Role roleForUser;
 
-        return id;
+        if(role.toLowerCase().equals("admin")){
+            roleForUser = new Role(1, 0, 0, 1);
+        }else if(role.toLowerCase().equals("tutor")){
+            roleForUser = new Role(2, 0, 1, 0);
+        }else{
+            roleForUser = new Role(3, 1, 0, 0);
+        }
+        return roleForUser;
     }
-
-   /* private Role setRoleId(String role){
-        Role roleObj = new Role();
-
-        if(role.toLowerCase().equals("admin")){
-            roleObj.setUser(0);
-            roleObj.setTutor(0);
-            roleObj.setAdmin(1);
-        }else if(role.toLowerCase().equals("tutor")){
-            roleObj.setUser(0);
-            roleObj.setTutor(1);
-            roleObj.setAdmin(0);
-        }else if(role.toLowerCase().equals("user")){
-            roleObj.setUser(1);
-            roleObj.setTutor(0);
-            roleObj.setAdmin(0);
-        }
-
-        return roleObj;
-    }*/
-
 }
 
 

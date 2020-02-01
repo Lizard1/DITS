@@ -19,7 +19,7 @@
         <div class="col-5">
                 <form:form method="POST" action="/user/addnewuser" modelAttribute="formOfUser">
                     <div class="form-group">
-                        <p><form:select path="role" class="form-control bg-white text-info">
+                        <p><form:select path="roleFromForm" class="form-control bg-white text-info">
                             <form:options items="${roleList}"/>
                         </form:select></p>
                         <p><form:input path="firstName" class="form-control bg-white text-info" type="text"
