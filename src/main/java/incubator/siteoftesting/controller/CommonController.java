@@ -2,6 +2,7 @@ package incubator.siteoftesting.controller;
 
 
 import incubator.siteoftesting.model.CreationForm;
+import incubator.siteoftesting.model.Topic;
 import incubator.siteoftesting.model.UserForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -79,8 +80,23 @@ public class CommonController {
         model.addAttribute("question", creationForm.getQuestionFromCrForm());
 
         ModelAndView modelAndView = new ModelAndView("adminUI3", "command", creationForm);
+        boolean topicLogic = !creationForm.getTopicFromCrFrom().isEmpty();
+        boolean testLogic = !creationForm.getTestFromCrForm().isEmpty();
+        boolean questionLogic = !creationForm.getQuestionFromCrForm().isEmpty();
 
-        CreationForm crForm = new CreationForm(creationForm.getTopicFromCrFrom(), creationForm.getTestFromCrForm(), creationForm.getQuestionFromCrForm());
+        if(questionLogic && testLogic && topicLogic){
+            // создание Вопроса, теста, темы
+            System.out.println("That is why");
+        } else if(testLogic && topicLogic){
+            //создание теста, темы
+            System.out.println("That is true");
+        }else if(topicLogic){
+            //создание темы
+            Topic topic = new Topic();
+            topic.setName(creationForm.getTopicFromCrFrom());
+            System.out.println("Three");
+        }
+
 
         return modelAndView;
     }
