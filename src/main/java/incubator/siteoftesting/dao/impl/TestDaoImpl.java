@@ -22,7 +22,7 @@ public class TestDaoImpl implements TestDao {
     @Override
     public List<Test> findAllTests() {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from Question").list();
+        return session.createQuery("from Test ").list();
     }
 
     @Override

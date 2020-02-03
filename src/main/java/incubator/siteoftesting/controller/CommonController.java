@@ -133,19 +133,19 @@ public class CommonController {
         Map<String, String> topicMap = new HashMap<String, String>();
         List<Topic> topics = topicService.getAllTopics();
 
-        for (Topic t : topics) {
-            topicMap.put(String.valueOf(t.getTopicId()), t.getName());
+        for (Topic top : topics) {
+            topicMap.put(String.valueOf(top.getTopicId()), top.getName());
         }
         return topicMap;
     }
 
-  /*  @ModelAttribute("testList")
+    @ModelAttribute("testList")
     public Map<String, String> getTestList() {
         Map<String, String> testMap = new HashMap<String, String>();
         List<Test> tests = testService.getAllTests();
 
-        for (Test t : tests) {
-            testMap.put(String.valueOf(t.getTestId()), t.getName());
+        for (Test tes : tests) {
+            testMap.put(String.valueOf(tes.getTestId()), tes.getName());
         }
         return testMap;
     }
@@ -159,7 +159,7 @@ public class CommonController {
             questionMap.put(String.valueOf(t.getQuestionId()), t.getDescription());
         }
         return questionMap;
-    }*/
+    }
 
     @ModelAttribute("statisticList")
     public Map<String, String> getStatisticsData(){
