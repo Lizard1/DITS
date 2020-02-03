@@ -72,7 +72,7 @@ public class UserController {
         model.addAttribute("email", userForm.getEmail());
 
         ModelAndView modelAndView = new ModelAndView("adminUI4", "command", userForm);
-        modelAndView.addObject("newuser", model);
+        //modelAndView.addObject("newuser", model);
 
         User user = new User();
         user.setFirstName(userForm.getFirstName());

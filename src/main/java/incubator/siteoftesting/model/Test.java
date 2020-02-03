@@ -49,6 +49,14 @@ public class Test {
         this.description = description;
     }
 
+    public Topic getTopic() {
+        return topic;
+    }
+
+    public void setTopic(Topic topic) {
+        this.topic = topic;
+    }
+
     @Override
     public String toString() {
         return "Test{" +

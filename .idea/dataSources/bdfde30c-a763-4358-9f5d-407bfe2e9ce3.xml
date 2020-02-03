@@ -1414,8 +1414,7 @@
     </column>
     <column id="343" parent="291" name="desccription">
       <Position>2</Position>
-      <DataType>varchar(300)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>binary(16)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="344" parent="291" name="name">

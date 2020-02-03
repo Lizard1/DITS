@@ -1,9 +1,11 @@
 package incubator.siteoftesting.controller;
 
 
-import incubator.siteoftesting.model.CreationForm;
-import incubator.siteoftesting.model.Topic;
-import incubator.siteoftesting.model.UserForm;
+import incubator.siteoftesting.model.*;
+import incubator.siteoftesting.service.QuestionService;
+import incubator.siteoftesting.service.TestService;
+import incubator.siteoftesting.service.TopicService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,11 +14,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
 @RequestMapping("/common")
 public class CommonController {
+
+    @Autowired
+    private QuestionService questionService;
+
+    @Autowired
+    private TestService testService;
+
+    @Autowired
+    private TopicService topicService;
 
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
@@ -85,24 +97,29 @@ public class CommonController {
         boolean questionLogic = !creationForm.getQuestionFromCrForm().isEmpty();
 
         if(questionLogic && testLogic && topicLogic){
-            // создание Вопроса, теста, темы
-            System.out.println("That is why");
-        } else if(testLogic && topicLogic){
-            //создание теста, темы
-            System.out.println("That is true");
-        }else if(topicLogic){
-            //создание темы
+            Question question = new Question();
+            question.setDescription(creationForm.getQuestionFromCrForm());
+            questionService.createQuestion(question);
+        }
+        else if(testLogic && topicLogic){
+            Test test = new Test();
             Topic topic = new Topic();
             topic.setName(creationForm.getTopicFromCrFrom());
-            System.out.println("Three");
+            test.setName(creationForm.getTestFromCrForm());
+            test.setTopic(topic);
+            testService.createTest(test);
         }
-
+        else if(topicLogic){
+            Topic topic = new Topic();
+            topic.setName(creationForm.getTopicFromCrFrom());
+            topicService.createTopic(topic);
+        }
 
         return modelAndView;
     }
 
     @ModelAttribute("roleList")
-    public Map<String, String> getCountryList() {
+    public Map<String, String> getRoleList() {
         Map<String, String> roleList = new HashMap<String, String>();
         roleList.put("admin", "Администратор");
         roleList.put("tutor", "Преподаватель");
@@ -112,31 +129,34 @@ public class CommonController {
 
     @ModelAttribute("topicList")
     public Map<String, String> getTopicList() {
-        Map<String, String> topicList = new HashMap<String, String>();
-        topicList.put("t1", "Тема 1");
-        topicList.put("t2", "Тема 2");
-        topicList.put("t3", "Тема 3");
-        topicList.put("t4", "Тема 4");
-        return topicList;
+        Map<String, String> topicMap = new HashMap<String, String>();
+        List<Topic> topics = topicService.getAllTopics();
+
+        for (Topic t: topics) {
+            topicMap.put(String.valueOf(t.getTopicId()), t.getName());
+        }
+        return topicMap;
     }
 
     @ModelAttribute("testList")
     public Map<String, String> getTestList() {
-        Map<String, String> testList = new HashMap<String, String>();
-        testList.put("t1", "Тест 1");
-        testList.put("t2", "Тест 2");
-        testList.put("t3", "Тест 3");
-        testList.put("t4", "Тест 4");
-        return testList;
+        Map<String, String> testMap = new HashMap<String, String>();
+        List<Test> tests = testService.getAllTests();
+
+        for (Test t: tests) {
+            testMap.put(String.valueOf(t.getTestId()), t.getName());
+        }
+        return testMap;
     }
 
     @ModelAttribute("questionList")
     public Map<String, String> getQuestionList() {
-        Map<String, String> questionList = new HashMap<String, String>();
-        questionList.put("q1", "Вопрос 1");
-        questionList.put("q2", "Вопрос 2");
-        questionList.put("q3", "Вопрос 3");
-        questionList.put("q4", "Вопрос 4");
-        return questionList;
+        Map<String, String> questionMap = new HashMap<>();
+        List<Question> questions = questionService.getAllQuestions();
+
+        for (Question t: questions) {
+            questionMap.put(String.valueOf(t.getQuestionId()), t.getDescription());
+        }
+        return questionMap;
     }
 }
