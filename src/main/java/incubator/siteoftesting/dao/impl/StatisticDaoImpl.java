@@ -14,8 +14,6 @@ public class StatisticDaoImpl implements StatisticDao {
 
     private SessionFactory sessionFactory;
 
-
-
     @Autowired
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;

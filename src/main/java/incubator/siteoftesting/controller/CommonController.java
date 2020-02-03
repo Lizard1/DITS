@@ -3,6 +3,7 @@ package incubator.siteoftesting.controller;
 
 import incubator.siteoftesting.model.*;
 import incubator.siteoftesting.service.QuestionService;
+import incubator.siteoftesting.service.StatisticService;
 import incubator.siteoftesting.service.TestService;
 import incubator.siteoftesting.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,8 @@ public class CommonController {
     @Autowired
     private TopicService topicService;
 
+    @Autowired
+    private StatisticService statisticService;
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView hello() {
@@ -96,20 +99,18 @@ public class CommonController {
         boolean testLogic = !creationForm.getTestFromCrForm().isEmpty();
         boolean questionLogic = !creationForm.getQuestionFromCrForm().isEmpty();
 
-        if(questionLogic && testLogic && topicLogic){
+        if (questionLogic && testLogic && topicLogic) {
             Question question = new Question();
             question.setDescription(creationForm.getQuestionFromCrForm());
             questionService.createQuestion(question);
-        }
-        else if(testLogic && topicLogic){
+        } else if (testLogic && topicLogic) {
             Test test = new Test();
             Topic topic = new Topic();
             topic.setName(creationForm.getTopicFromCrFrom());
             test.setName(creationForm.getTestFromCrForm());
             test.setTopic(topic);
             testService.createTest(test);
-        }
-        else if(topicLogic){
+        } else if (topicLogic) {
             Topic topic = new Topic();
             topic.setName(creationForm.getTopicFromCrFrom());
             topicService.createTopic(topic);
@@ -132,18 +133,18 @@ public class CommonController {
         Map<String, String> topicMap = new HashMap<String, String>();
         List<Topic> topics = topicService.getAllTopics();
 
-        for (Topic t: topics) {
+        for (Topic t : topics) {
             topicMap.put(String.valueOf(t.getTopicId()), t.getName());
         }
         return topicMap;
     }
 
-    @ModelAttribute("testList")
+  /*  @ModelAttribute("testList")
     public Map<String, String> getTestList() {
         Map<String, String> testMap = new HashMap<String, String>();
         List<Test> tests = testService.getAllTests();
 
-        for (Test t: tests) {
+        for (Test t : tests) {
             testMap.put(String.valueOf(t.getTestId()), t.getName());
         }
         return testMap;
@@ -154,9 +155,20 @@ public class CommonController {
         Map<String, String> questionMap = new HashMap<>();
         List<Question> questions = questionService.getAllQuestions();
 
-        for (Question t: questions) {
+        for (Question t : questions) {
             questionMap.put(String.valueOf(t.getQuestionId()), t.getDescription());
         }
         return questionMap;
+    }*/
+
+    @ModelAttribute("statisticList")
+    public Map<String, String> getStatisticsData(){
+        Map<String, String> statisticMap = new HashMap<>();
+        List<Statistic> statistics = statisticService.getAllStatistics();
+
+        for (Statistic t: statistics) {
+            statisticMap.put(String.valueOf(t.getStatisticId()), String.valueOf(t.getStatisticId()));
+        }
+        return statisticMap;
     }
 }

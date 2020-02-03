@@ -16,6 +16,7 @@ public class QuestionServiceImpl implements QuestionService {
     private QuestionDao questionDao;
 
     @Override
+    @Transactional
     public List<Question> getAllQuestions() {
         return questionDao.findAllQuestions();
     }

@@ -22,8 +22,7 @@ public class Test {
     @OneToMany(mappedBy = "test")
     private Set<Question> questions;
 
-    public Test() {
-    }
+    public Test() {}
 
     public int getTestId() {
         return testId;

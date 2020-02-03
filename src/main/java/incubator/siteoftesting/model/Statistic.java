@@ -24,7 +24,6 @@ public class Statistic {
     @JoinColumn(name = "userId")
     private User userStat;
 
-    //manytoone for question
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "questionId")
     private Question question;

@@ -23,9 +23,12 @@
                     <th class="col head">Процент правильных ответов</th>
                 </tr>
                 <tr class="row">
-                    <td class="col">1</td>
-                    <td class="col">1</td>
-                    <td class="col">1</td>
+                    <%--<c:forEach items="${statisticList}" var="statistic">--%>
+                        <%--<td class="col">${statistic.value}</td>--%>
+                        <%--</c:forEach>--%>
+                    <%--<td class="col">1</td>--%>
+                    <%--<td class="col">1</td>--%>
+                    <%--<td class="col">1</td>--%>
                 </tr>
                 <tr class="row">
                     <td class="col">2</td>
