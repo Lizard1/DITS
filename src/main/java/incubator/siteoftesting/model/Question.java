@@ -18,9 +18,17 @@ public class Question {
     @OneToMany(mappedBy = "question")
     private Set<Statistic> statisticsQuestions;
 
+    @OneToMany(mappedBy = "questionL")
+    private Set<Literature> literatureSet;
+
+    @OneToMany(mappedBy = "questionA")
+    private Set<Answer> answers;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "testId")
     private Test test;
+
+
 
     public Question(){}
 
