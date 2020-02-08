@@ -2,7 +2,7 @@ package incubator.siteoftesting.controller;
 
 import incubator.siteoftesting.model.Role;
 import incubator.siteoftesting.model.User;
-import incubator.siteoftesting.model.UserForm;
+import incubator.siteoftesting.model.additional.UserForm;
 import incubator.siteoftesting.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

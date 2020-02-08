@@ -31,17 +31,12 @@ public class Statistic {
     public Statistic() {
     }
 
-    public Statistic(Date date, boolean correct) {
-        this.date = date;
-        this.correct = correct;
-    }
-
-    public int getStatisticId() {
+    public int getStatisticsId() {
         return statisticsId;
     }
 
-    public void setStatisticId(int statisticId) {
-        this.statisticsId = statisticId;
+    public void setStatisticsId(int statisticsId) {
+        this.statisticsId = statisticsId;
     }
 
     public Date getDate() {
@@ -60,4 +55,28 @@ public class Statistic {
         this.correct = correct;
     }
 
+    public User getUserStat() {
+        return userStat;
+    }
+
+    public void setUserStat(User userStat) {
+        this.userStat = userStat;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
+
+    @Override
+    public String toString() {
+        return "Statistic{" +
+                "statisticsId=" + statisticsId +
+                ", date=" + date +
+                ", correct=" + correct +
+                '}';
+    }
 }

@@ -1,4 +1,4 @@
-package incubator.siteoftesting.model;
+package incubator.siteoftesting.model.additional;
 
 public class CreationForm {
     private String topicFromCrFrom;

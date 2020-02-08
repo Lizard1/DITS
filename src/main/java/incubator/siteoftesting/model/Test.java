@@ -1,5 +1,7 @@
 package incubator.siteoftesting.model;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -39,6 +41,7 @@ public class Test {
     public void setName(String name) {
         this.name = name;
     }
+
 
     public String getDescription() {
         return description;

@@ -4,9 +4,11 @@ import incubator.siteoftesting.dao.LinkDao;
 import incubator.siteoftesting.model.Link;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class LinkDaoImpl implements LinkDao {
 
     private SessionFactory sessionFactory;

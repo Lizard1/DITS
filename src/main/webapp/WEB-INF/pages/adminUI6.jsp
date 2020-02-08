@@ -22,39 +22,45 @@
                     <th class="col head">Пройдено всего</th>
                     <th class="col head">Процент правильных ответов</th>
                 </tr>
-                <tr class="row">
-                    <%--<c:forEach items="${statisticList}" var="statistic">--%>
-                        <%--<td class="col">${statistic.value}</td>--%>
-                        <%--</c:forEach>--%>
-                    <%--<td class="col">1</td>--%>
-                    <%--<td class="col">1</td>--%>
-                    <%--<td class="col">1</td>--%>
-                </tr>
-                <tr class="row">
-                    <td class="col">2</td>
-                    <td class="col">2</td>
-                    <td class="col">2</td>
-                </tr>
-                <tr class="row">
-                    <td class="col">3</td>
-                    <td class="col">3</td>
-                    <td class="col">3</td>
-                </tr>
-                <tr class="row">
-                    <td class="col">4</td>
-                    <td class="col">4</td>
-                    <td class="col">4</td>
-                </tr>
-                <tr class="row">
-                    <td class="col">5</td>
-                    <td class="col">5</td>
-                    <td class="col">5</td>
-                </tr>
+
+                <c:forEach items="${table}" var="tableData">
+                    <tr class="row">
+                        <td class="col">${tableData.name}</td>
+                        <td class="col">${test.value.description}</td>
+                        <td class="col">${test.value.topic.name}</td>
+                    </tr>
+                </c:forEach>
             </table>
             </p>
-            <p><button class="btn text-white bg-primary" onclick='history.back()'>Назад</button></p>
+            <p>
+                <button class="btn text-white bg-primary" onclick='history.back()'>Назад</button>
+            </p>
         </div>
     </div>
 </div>
 </body>
 </html>
+<%--<c:forEach items="${statisticList}" var="statistic">--%>
+<%--<td class="col">${statistic.key}</td>--%>
+<%--</c:forEach>--%>
+
+<%--<tr class="row">--%>
+    <%--<td class="col">2</td>--%>
+    <%--<td class="col">2</td>--%>
+    <%--<td class="col">2</td>--%>
+<%--</tr>--%>
+<%--<tr class="row">--%>
+    <%--<td class="col">3</td>--%>
+    <%--<td class="col">3</td>--%>
+    <%--<td class="col">3</td>--%>
+<%--</tr>--%>
+<%--<tr class="row">--%>
+    <%--<td class="col">4</td>--%>
+    <%--<td class="col">4</td>--%>
+    <%--<td class="col">4</td>--%>
+<%--</tr>--%>
+<%--<tr class="row">--%>
+    <%--<td class="col">5</td>--%>
+    <%--<td class="col">5</td>--%>
+    <%--<td class="col">5</td>--%>
+<%--</tr>--%>

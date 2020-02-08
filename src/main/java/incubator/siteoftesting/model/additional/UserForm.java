@@ -1,6 +1,8 @@
-package incubator.siteoftesting.model;
+package incubator.siteoftesting.model.additional;
 
-public class UserForm extends User{
+import incubator.siteoftesting.model.User;
+
+public class UserForm extends User {
     private String roleFromForm;
     private String patronymic;
     private String email;

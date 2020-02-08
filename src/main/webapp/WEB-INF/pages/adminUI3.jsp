@@ -20,21 +20,21 @@
                 <p><form:input path="topicFromCrFrom" class="form-control" type="text" list="topics" placeholder="Выберите тему"/>
                     <datalist id="topics">
                         <c:forEach items="${topicList}" var="topicFromCrFrom">
-                        <option value="${topicFromCrFrom.value}">
+                        <option value="${topicFromCrFrom.value.name}">
                             </c:forEach>
                     </datalist>
                 </p>
                 <p><form:input path="testFromCrForm" class="form-control" type="text" list="tests" placeholder="Выберите тест"/>
                     <datalist id="tests">
                         <c:forEach items="${testList}" var="testFromCrForm">
-                        <option value="${testFromCrForm.value}">
+                        <option value="${testFromCrForm.value.name}">
                             </c:forEach>
                     </datalist>
                 </p>
                 <p><form:input path="questionFromCrForm" class="form-control" type="text" list="questions" placeholder="Выберите вопрос"/>
                     <datalist id="questions">
                         <c:forEach items="${questionList}" var="questionFromCrForm">
-                        <option value="${questionFromCrForm.value}">
+                        <option value="${questionFromCrForm.value.description}">
                             </c:forEach>
                     </datalist>
                 </p>

@@ -2,6 +2,8 @@ package incubator.siteoftesting.controller;
 
 
 import incubator.siteoftesting.model.*;
+import incubator.siteoftesting.model.additional.CreationForm;
+import incubator.siteoftesting.model.additional.UserForm;
 import incubator.siteoftesting.service.QuestionService;
 import incubator.siteoftesting.service.StatisticService;
 import incubator.siteoftesting.service.TestService;
@@ -67,27 +69,6 @@ public class CommonController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/index/statistictest", method = RequestMethod.GET)
-    public ModelAndView goToStatisticTest() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("adminUI6");
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/index/statseven", method = RequestMethod.GET)
-    public ModelAndView goToSeven() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("adminUI7");
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/index/statee", method = RequestMethod.GET)
-    public ModelAndView goToStatEghtn() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("adminUI8");
-        return modelAndView;
-    }
-
     @RequestMapping(value = "/index/creationt/create", method = RequestMethod.POST)
     public ModelAndView getDataForCreation(@ModelAttribute("crForm") CreationForm creationForm, ModelMap model) {
         model.addAttribute("topic", creationForm.getTopicFromCrFrom());
@@ -129,46 +110,39 @@ public class CommonController {
     }
 
     @ModelAttribute("topicList")
-    public Map<String, String> getTopicList() {
-        Map<String, String> topicMap = new HashMap<String, String>();
+    public Map<String, Topic> getTopicList() {
+        Map<String, Topic> topicMap = new HashMap<String, Topic>();
         List<Topic> topics = topicService.getAllTopics();
 
         for (Topic top : topics) {
-            topicMap.put(String.valueOf(top.getTopicId()), top.getName());
+            topicMap.put(String.valueOf(top.getTopicId()), top);
         }
         return topicMap;
     }
 
     @ModelAttribute("testList")
-    public Map<String, String> getTestList() {
-        Map<String, String> testMap = new HashMap<String, String>();
+    public Map<String, Test> getTestList() {
+        Map<String, Test> testMap = new HashMap<String, Test>();
         List<Test> tests = testService.getAllTests();
 
         for (Test tes : tests) {
-            testMap.put(String.valueOf(tes.getTestId()), tes.getName());
+            testMap.put(String.valueOf(tes.getTestId()), tes);
         }
         return testMap;
     }
 
     @ModelAttribute("questionList")
-    public Map<String, String> getQuestionList() {
-        Map<String, String> questionMap = new HashMap<>();
+    public Map<String, Question> getQuestionList() {
+        Map<String, Question> questionMap = new HashMap<>();
         List<Question> questions = questionService.getAllQuestions();
 
         for (Question t : questions) {
-            questionMap.put(String.valueOf(t.getQuestionId()), t.getDescription());
+            questionMap.put(String.valueOf(t.getQuestionId()), t);
         }
         return questionMap;
     }
 
-    @ModelAttribute("statisticList")
-    public Map<String, String> getStatisticsData(){
-        Map<String, String> statisticMap = new HashMap<>();
-        List<Statistic> statistics = statisticService.getAllStatistics();
 
-        for (Statistic t: statistics) {
-            statisticMap.put(String.valueOf(t.getStatisticId()), String.valueOf(t.getStatisticId()));
-        }
-        return statisticMap;
-    }
+
+
 }

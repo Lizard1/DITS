@@ -28,13 +28,7 @@ public class Question {
     @JoinColumn(name = "testId")
     private Test test;
 
-
-
     public Question(){}
-
-    public Question(String description) {
-        this.description = description;
-    }
 
     public int getQuestionId() {
         return questionId;
@@ -50,6 +44,38 @@ public class Question {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<Statistic> getStatisticsQuestions() {
+        return statisticsQuestions;
+    }
+
+    public void setStatisticsQuestions(Set<Statistic> statisticsQuestions) {
+        this.statisticsQuestions = statisticsQuestions;
+    }
+
+    public Set<Literature> getLiteratureSet() {
+        return literatureSet;
+    }
+
+    public void setLiteratureSet(Set<Literature> literatureSet) {
+        this.literatureSet = literatureSet;
+    }
+
+    public Set<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(Set<Answer> answers) {
+        this.answers = answers;
+    }
+
+    public Test getTest() {
+        return test;
+    }
+
+    public void setTest(Test test) {
+        this.test = test;
     }
 
     @Override
