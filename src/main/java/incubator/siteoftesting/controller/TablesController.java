@@ -1,7 +1,7 @@
 package incubator.siteoftesting.controller;
 
 import incubator.siteoftesting.model.Answer;
-import incubator.siteoftesting.model.additional.TableData;
+import incubator.siteoftesting.model.additional.TableDataTest;
 import incubator.siteoftesting.model.Test;
 import incubator.siteoftesting.service.AnswerService;
 import incubator.siteoftesting.service.QuestionService;
@@ -38,24 +38,26 @@ public class TablesController {
     }
 
     @ModelAttribute("table")
-    public List<Test>  getTableData(){
-        Map<String, TableData> tableMap = new HashMap<>();
+    public List<TableDataTest> getTableData(){
         List<Test> tests = testService.getAllTests();
-        //Collection<Answer> answers1 = getAnswers();
+        List<TableDataTest> tableDataTestList = new ArrayList<>();
 
+        for (Test t: tests) {
+            TableDataTest tableDataTest = new TableDataTest();
+            tableDataTest.setTest(t);
+            tableDataTest.setCountPassed(0);
+            tableDataTest.setPercentRight(getPercentRightAnswers(t));
+            tableDataTestList.add(tableDataTest);
+        }
 
-        return tests;
+        return tableDataTestList;
     }
 
-    private List<Answer> getAnswers() {
+    private double getPercentRightAnswers(Test test) {
         List<Answer> answers = answerService.getAllAnswers();
-        int perst = (int)answers.stream().filter(x -> x.getCorrect() == 1).count();
-        for (Answer ans: answers) {
-            if(ans.getCorrect() == 1){
-
-            }
-        }
-        return answers;
+        int rightAnswers = (int)answers.stream().filter(x -> x.getCorrect() == 1 && x.getQuestionA().getTest().getTestId() == test.getTestId()).count();
+        int certainTestAnswers = (int)answers.stream().filter(x -> x.getQuestionA().getTest().getTestId() == test.getTestId()).count();
+        return rightAnswers*100/certainTestAnswers;
     }
 
     @RequestMapping(value = "/statseven", method = RequestMethod.GET)
@@ -77,8 +79,8 @@ public class TablesController {
 *
 *
     @ModelAttribute("tableMap")
-    public Map<String, TableData> getTableData(){
-        Map<String, TableData> tableMap = new HashMap<>();
+    public Map<String, TableDataTest> getTableData(){
+        Map<String, TableDataTest> tableMap = new HashMap<>();
         List<Test> tests = testService.getAllTests();
         //Collection<Answer> answers1 = getAnswers();
 

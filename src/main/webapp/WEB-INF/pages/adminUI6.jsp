@@ -23,11 +23,11 @@
                     <th class="col head">Процент правильных ответов</th>
                 </tr>
 
-                <c:forEach items="${table}" var="tableData">
+                <c:forEach items="${table}" var="tableDataTest">
                     <tr class="row">
-                        <td class="col">${tableData.name}</td>
-                        <td class="col">${test.value.description}</td>
-                        <td class="col">${test.value.topic.name}</td>
+                        <td class="col">${tableDataTest.test.name}</td>
+                        <td class="col">${tableDataTest.countPassed}</td>
+                        <td class="col">${tableDataTest.percentRight}</td>
                     </tr>
                 </c:forEach>
             </table>
