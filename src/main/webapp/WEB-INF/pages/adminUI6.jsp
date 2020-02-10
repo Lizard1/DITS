@@ -40,27 +40,3 @@
 </div>
 </body>
 </html>
-<%--<c:forEach items="${statisticList}" var="statistic">--%>
-<%--<td class="col">${statistic.key}</td>--%>
-<%--</c:forEach>--%>
-
-<%--<tr class="row">--%>
-    <%--<td class="col">2</td>--%>
-    <%--<td class="col">2</td>--%>
-    <%--<td class="col">2</td>--%>
-<%--</tr>--%>
-<%--<tr class="row">--%>
-    <%--<td class="col">3</td>--%>
-    <%--<td class="col">3</td>--%>
-    <%--<td class="col">3</td>--%>
-<%--</tr>--%>
-<%--<tr class="row">--%>
-    <%--<td class="col">4</td>--%>
-    <%--<td class="col">4</td>--%>
-    <%--<td class="col">4</td>--%>
-<%--</tr>--%>
-<%--<tr class="row">--%>
-    <%--<td class="col">5</td>--%>
-    <%--<td class="col">5</td>--%>
-    <%--<td class="col">5</td>--%>
-<%--</tr>--%>

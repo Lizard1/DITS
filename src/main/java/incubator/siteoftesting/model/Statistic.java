@@ -2,6 +2,7 @@ package incubator.siteoftesting.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -69,6 +70,21 @@ public class Statistic {
 
     public void setQuestion(Question question) {
         this.question = question;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Statistic statistic = (Statistic) o;
+        return statisticsId == statistic.statisticsId &&
+                correct == statistic.correct &&
+                Objects.equals(date, statistic.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(statisticsId, date, correct);
     }
 
     @Override

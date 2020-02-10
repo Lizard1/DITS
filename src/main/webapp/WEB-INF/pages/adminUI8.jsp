@@ -23,39 +23,19 @@
                     <th class="col head">Пройдено всего</th>
                     <th class="col head">Процент правильных ответов</th>
                 </tr>
-                <tr class="row">
-                    <td class="col">1</td>
-                    <td class="col">1</td>
-                    <td class="col">1</td>
-                    <td class="col">1</td>
-                </tr>
-                <tr class="row">
-                    <td class="col">2</td>
-                    <td class="col">2</td>
-                    <td class="col">2</td>
-                    <td class="col">2</td>
-                </tr>
-                <tr class="row">
-                    <td class="col">3</td>
-                    <td class="col">3</td>
-                    <td class="col">3</td>
-                    <td class="col">3</td>
-                </tr>
-                <tr class="row">
-                    <td class="col">4</td>
-                    <td class="col">4</td>
-                    <td class="col">4</td>
-                    <td class="col">4</td>
-                </tr>
-                <tr class="row">
-                    <td class="col">5</td>
-                    <td class="col">5</td>
-                    <td class="col">5</td>
-                    <td class="col">5</td>
-                </tr>
+                <c:forEach items="${tableDataUser}" var="tableDataUser">
+                    <tr class="row">
+                        <td class="col">${tableDataUser.user.firstName}</td>
+                        <td class="col">${tableDataUser.nameTest}</td>
+                        <td class="col">${tableDataUser.countPassed}</td>
+                        <td class="col">${tableDataUser.percentPassed}</td>
+                    </tr>
+                </c:forEach>
             </table>
             </p>
-            <p><button class="btn text-white bg-primary" onclick='history.back()'>Назад</button></p>
+            <p>
+                <button class="btn text-white bg-primary" onclick='history.back()'>Назад</button>
+            </p>
         </div>
     </div>
 </div>
