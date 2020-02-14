@@ -18,7 +18,7 @@
             <p>
             <table class="container">
                 <tr class="row">
-                    <th class="col head">Название теста</th>
+                    <th class="col head">Название вопроса</th>
                     <th class="col head">Пройдено всего</th>
                     <th class="col head">Процент правильных ответов</th>
                 </tr>

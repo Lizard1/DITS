@@ -24,6 +24,9 @@ public class Test {
     @OneToMany(mappedBy = "test")
     private Set<Question> questions;
 
+    @OneToMany(mappedBy = "testS")
+    private Set<Statistic> statistics;
+
     public Test() {}
 
     public int getTestId() {
@@ -42,7 +45,6 @@ public class Test {
         this.name = name;
     }
 
-
     public String getDescription() {
         return description;
     }
@@ -59,12 +61,19 @@ public class Test {
         this.topic = topic;
     }
 
-    @Override
-    public String toString() {
-        return "Test{" +
-                "testId=" + testId +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+    public Set<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(Set<Question> questions) {
+        this.questions = questions;
+    }
+
+    public Set<Statistic> getStatistics() {
+        return statistics;
+    }
+
+    public void setStatistics(Set<Statistic> statistics) {
+        this.statistics = statistics;
     }
 }

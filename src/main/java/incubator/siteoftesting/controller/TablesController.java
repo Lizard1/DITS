@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/common/index")
@@ -47,7 +49,7 @@ public class TablesController {
         for (Test t : tests) {
             TableDataTest tableDataTest = new TableDataTest();
             tableDataTest.setTest(t);
-            tableDataTest.setCountPassed(0);
+            tableDataTest.setCountPassed(getCountOfTimePassedTests(t));
             tableDataTest.setPercentRight(getPercentRightAnswersTest(t));
             tableDataTestList.add(tableDataTest);
         }
@@ -61,7 +63,7 @@ public class TablesController {
         for (Question q : questions) {
             TableDataQuestion tableDataQuestion = new TableDataQuestion();
             tableDataQuestion.setQuestion(q);
-            tableDataQuestion.setCountPassed(0);
+            tableDataQuestion.setCountPassed(getCountOfTimePassedQuestions(q));
             tableDataQuestion.setPercentRight(getPercentRightAnswersQuestion(q));
             tableDataQuestions.add(tableDataQuestion);
         }
@@ -76,11 +78,29 @@ public class TablesController {
             TableDataUser tableDataUser = new TableDataUser();
             tableDataUser.setUser(u);
             tableDataUser.setNameTest(getNameTestForUser(u));
-            tableDataUser.setCountPassed(1);
+            tableDataUser.setCountPassed(getCountOfTimePassedTestsByUser(u));
             tableDataUser.setPercentPassed(getPercentRightAnswersUser(u));
             tableDataUsers.add(tableDataUser);
         }
         return tableDataUsers;
+    }
+
+    public int getCountOfTimePassedQuestions(Question q) {
+        List<Statistic> statistics = statisticService.getAllStatistics();
+        int count = (int) statistics.stream().filter(s -> s.getQuestion().getQuestionId() == q.getQuestionId()).count();
+        return count;
+    }
+
+    public int getCountOfTimePassedTests(Test t) {
+        List<Statistic> statistics = statisticService.getAllStatistics();
+        int count = (int) statistics.stream().filter(s -> s.getTestS().getTestId() == t.getTestId()).count();
+        return count;
+    }
+
+
+    public int getCountOfTimePassedTestsByUser(User u) {
+        List<Statistic> stats = statisticService.getAllStatistics().stream().filter(s -> s.getUserStat().getUserId() == u.getUserId()).collect(Collectors.toList());
+        return stats.stream().collect(Collectors.groupingBy(Statistic::getTestS, Collectors.counting())).size();
     }
 
     private String getNameTestForUser(User user) {

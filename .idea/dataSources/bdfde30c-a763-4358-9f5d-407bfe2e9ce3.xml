@@ -1341,168 +1341,182 @@
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="330" parent="289" name="statistic_qustion_fk">
+    <column id="330" parent="289" name="testId">
+      <Position>6</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="331" parent="289" name="statistic_qustion_fk">
       <ColNames>questionId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="331" parent="289" name="statistic_user_fk">
+    <index id="332" parent="289" name="statistic_user_fk">
       <ColNames>userId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="332" parent="289" name="PRIMARY">
+    <index id="333" parent="289" name="statistic_test_fk">
+      <ColNames>testId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="334" parent="289" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>statisticId</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="333" parent="289" name="statistic_qustion_fk">
+    <foreign-key id="335" parent="289" name="statistic_qustion_fk">
       <ColNames>questionId</ColNames>
       <RefSchemaName>statistic_user_role</RefSchemaName>
       <RefTableName>question</RefTableName>
       <RefColNames>questionId</RefColNames>
     </foreign-key>
-    <foreign-key id="334" parent="289" name="statistic_user_fk">
+    <foreign-key id="336" parent="289" name="statistic_user_fk">
       <ColNames>userId</ColNames>
       <RefSchemaName>statistic_user_role</RefSchemaName>
       <RefTableName>usser</RefTableName>
       <RefColNames>userId</RefColNames>
     </foreign-key>
-    <column id="335" parent="290" name="testId">
+    <foreign-key id="337" parent="289" name="statistic_test_fk">
+      <ColNames>testId</ColNames>
+      <RefSchemaName>statistic_user_role</RefSchemaName>
+      <RefTableName>test</RefTableName>
+      <RefColNames>testId</RefColNames>
+    </foreign-key>
+    <column id="338" parent="290" name="testId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="336" parent="290" name="name">
+    <column id="339" parent="290" name="name">
       <Position>2</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="337" parent="290" name="description">
+    <column id="340" parent="290" name="description">
       <Position>3</Position>
       <DataType>varchar(300)|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="338" parent="290" name="topicId">
+    <column id="341" parent="290" name="topicId">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="339" parent="290" name="test_topic_fk">
+    <index id="342" parent="290" name="test_topic_fk">
       <ColNames>topicId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="340" parent="290" name="PRIMARY">
+    <key id="343" parent="290" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>testId</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="341" parent="290" name="test_topic_fk">
+    <foreign-key id="344" parent="290" name="test_topic_fk">
       <ColNames>topicId</ColNames>
       <RefSchemaName>statistic_user_role</RefSchemaName>
       <RefTableName>topic</RefTableName>
       <RefColNames>topicId</RefColNames>
     </foreign-key>
-    <column id="342" parent="291" name="topicId">
+    <column id="345" parent="291" name="topicId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="343" parent="291" name="desccription">
+    <column id="346" parent="291" name="desccription">
       <Position>2</Position>
       <DataType>binary(16)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="344" parent="291" name="name">
+    <column id="347" parent="291" name="name">
       <Position>3</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="345" parent="291" name="PRIMARY">
+    <key id="348" parent="291" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>topicId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="346" parent="292" name="userId">
+    <column id="349" parent="292" name="userId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="347" parent="292" name="firstName">
+    <column id="350" parent="292" name="firstName">
       <Position>2</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="348" parent="292" name="lastName">
+    <column id="351" parent="292" name="lastName">
       <Position>3</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="349" parent="292" name="login">
+    <column id="352" parent="292" name="login">
       <Position>4</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="350" parent="292" name="pasword">
+    <column id="353" parent="292" name="pasword">
       <Position>5</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="351" parent="292" name="ruleId">
+    <column id="354" parent="292" name="ruleId">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="352" parent="292" name="login">
+    <index id="355" parent="292" name="login">
       <ColNames>login</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="353" parent="292" name="pasword">
+    <index id="356" parent="292" name="pasword">
       <ColNames>pasword</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="354" parent="292" name="user_rule_fk">
+    <index id="357" parent="292" name="user_rule_fk">
       <ColNames>ruleId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="355" parent="292" name="PRIMARY">
+    <key id="358" parent="292" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userId</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="356" parent="292" name="login">
+    <key id="359" parent="292" name="login">
       <ColNames>login</ColNames>
       <UnderlyingIndexName>login</UnderlyingIndexName>
     </key>
-    <key id="357" parent="292" name="pasword">
+    <key id="360" parent="292" name="pasword">
       <ColNames>pasword</ColNames>
       <UnderlyingIndexName>pasword</UnderlyingIndexName>
     </key>
-    <foreign-key id="358" parent="292" name="user_rule_fk">
+    <foreign-key id="361" parent="292" name="user_rule_fk">
       <ColNames>ruleId</ColNames>
       <RefSchemaName>statistic_user_role</RefSchemaName>
       <RefTableName>rule</RefTableName>
       <RefColNames>ruleId</RefColNames>
     </foreign-key>
-    <argument id="359" parent="293" name="ending_value">
+    <argument id="362" parent="293" name="ending_value">
       <Position>1</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>int(11)|0s</DataType>
     </argument>
-    <argument id="360" parent="294" name="param1">
+    <argument id="363" parent="294" name="param1">
       <Position>1</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>int(11)|0s</DataType>

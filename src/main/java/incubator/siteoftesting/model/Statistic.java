@@ -29,6 +29,10 @@ public class Statistic {
     @JoinColumn(name = "questionId")
     private Question question;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "testId")
+    private Test testS;
+
     public Statistic() {
     }
 
@@ -72,27 +76,20 @@ public class Statistic {
         this.question = question;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Statistic statistic = (Statistic) o;
-        return statisticsId == statistic.statisticsId &&
-                correct == statistic.correct &&
-                Objects.equals(date, statistic.date);
+    public Test getTestS() {
+        return testS;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(statisticsId, date, correct);
+    public void setTestS(Test testS) {
+        this.testS = testS;
     }
 
     @Override
     public String toString() {
         return "Statistic{" +
-                "statisticsId=" + statisticsId +
-                ", date=" + date +
+                "date=" + date +
                 ", correct=" + correct +
+                ", testS=" + testS +
                 '}';
     }
 }
