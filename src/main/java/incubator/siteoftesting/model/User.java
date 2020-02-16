@@ -29,7 +29,10 @@ public class User {
     @JoinColumn(name = "ruleId")
     private Role role;
 
-    @OneToMany(mappedBy = "userStat", fetch = FetchType.EAGER)
+    @Column(name = "namerow")
+    private String roleString;
+
+    @OneToMany(mappedBy = "userStat")
     private Set<Statistic> statisticUser;
 
     public User(String firstName, String lastName, String login, String password) {
@@ -98,6 +101,14 @@ public class User {
         this.statisticUser = statisticUser;
     }
 
+    public String getRoleString() {
+        return roleString;
+    }
+
+    public void setRoleString(String roleString) {
+        this.roleString = roleString;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -107,12 +118,13 @@ public class User {
                 Objects.equals(firstName, user.firstName) &&
                 Objects.equals(lastName, user.lastName) &&
                 Objects.equals(login, user.login) &&
-                Objects.equals(password, user.password);
+                Objects.equals(password, user.password) &&
+                Objects.equals(roleString, user.roleString);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, firstName, lastName, login, password);
+        return Objects.hash(userId, firstName, lastName, login, password, roleString);
     }
 
     @Override
@@ -123,6 +135,7 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
+                ", roleString='" + roleString + '\'' +
                 '}';
     }
 }

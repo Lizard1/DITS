@@ -1469,8 +1469,7 @@
     </column>
     <column id="353" parent="292" name="pasword">
       <Position>5</Position>
-      <DataType>varchar(30)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="354" parent="292" name="ruleId">
@@ -1478,45 +1477,50 @@
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="355" parent="292" name="login">
+    <column id="355" parent="292" name="namerow">
+      <Position>7</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="356" parent="292" name="login">
       <ColNames>login</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="356" parent="292" name="pasword">
+    <index id="357" parent="292" name="pasword">
       <ColNames>pasword</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="357" parent="292" name="user_rule_fk">
+    <index id="358" parent="292" name="user_rule_fk">
       <ColNames>ruleId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="358" parent="292" name="PRIMARY">
+    <key id="359" parent="292" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userId</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="359" parent="292" name="login">
+    <key id="360" parent="292" name="login">
       <ColNames>login</ColNames>
       <UnderlyingIndexName>login</UnderlyingIndexName>
     </key>
-    <key id="360" parent="292" name="pasword">
+    <key id="361" parent="292" name="pasword">
       <ColNames>pasword</ColNames>
       <UnderlyingIndexName>pasword</UnderlyingIndexName>
     </key>
-    <foreign-key id="361" parent="292" name="user_rule_fk">
+    <foreign-key id="362" parent="292" name="user_rule_fk">
       <ColNames>ruleId</ColNames>
       <RefSchemaName>statistic_user_role</RefSchemaName>
       <RefTableName>rule</RefTableName>
       <RefColNames>ruleId</RefColNames>
     </foreign-key>
-    <argument id="362" parent="293" name="ending_value">
+    <argument id="363" parent="293" name="ending_value">
       <Position>1</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>int(11)|0s</DataType>
     </argument>
-    <argument id="363" parent="294" name="param1">
+    <argument id="364" parent="294" name="param1">
       <Position>1</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>int(11)|0s</DataType>

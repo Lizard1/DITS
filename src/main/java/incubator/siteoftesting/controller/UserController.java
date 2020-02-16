@@ -5,6 +5,7 @@ import incubator.siteoftesting.model.User;
 import incubator.siteoftesting.model.additional.UserForm;
 import incubator.siteoftesting.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -78,11 +79,21 @@ public class UserController {
         user.setFirstName(userForm.getFirstName());
         user.setLastName(userForm.getLastName());
         user.setLogin(userForm.getLogin());
-        user.setPassword(userForm.getPassword());
+        String codedPassword = new BCryptPasswordEncoder().encode(userForm.getPassword());
+        user.setPassword(codedPassword);
         user.setRole(setRole(userForm.getRoleFromForm()));
+        user.setRoleString("ROLE_ADMIN");
         userService.create(user);
         return modelAndView;
     }
+
+   /* @Transactional
+    public void сreateUser(User user, String nameRole) {
+        user.setRole(roleService.createRole(nameRole));
+        String codedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
+        user.setPassword(codedPassword);
+        userRepository.create(user);
+    }*/
 
     private Role setRole(String role){
         Role roleForUser;
