@@ -142,7 +142,4 @@ public class CommonController {
         return questionMap;
     }
 
-
-
-
 }

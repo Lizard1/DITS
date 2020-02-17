@@ -13,7 +13,7 @@
 <div class="container" id="main-container">
     <div class="row justify-content-md-center">
         <div class="col-4">
-            <form>
+            <form action="/login/process" method="post">
                 <div class="form-group align-items-center">
                     <p>
                         <input class="form-control bg-white text-info" type="text" id="login" placeholder="Логин или email" required>

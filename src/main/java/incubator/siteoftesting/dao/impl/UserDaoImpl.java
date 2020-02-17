@@ -32,6 +32,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public User findUserByLogin(String login){
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("from User where login = :login", User.class).setParameter("login", login).list().stream().findAny().orElse(null);
+    }
+
+    @Override
     public void create(User user) {
         Session session = sessionFactory.getCurrentSession();
         session.persist(user);
