@@ -15,7 +15,7 @@
             <img src="/res/images/human.png">
         </div>
 
-        <form:form method="POST" action="/common/index/creationt/create" modelAttribute="crForm" class="col-5">
+        <form:form method="POST" action="/index/creationt/create" modelAttribute="crForm" class="col-5">
             <div class="form-group">
                 <p><form:input path="topicFromCrFrom" class="form-control" type="text" list="topics" placeholder="Выберите тему"/>
                     <datalist id="topics">

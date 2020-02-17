@@ -17,7 +17,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("/common/index")
+@RequestMapping("/")
 public class TablesController {
 
     @Autowired
@@ -53,6 +53,7 @@ public class TablesController {
             tableDataTest.setPercentRight(getPercentRightAnswersTest(t));
             tableDataTestList.add(tableDataTest);
         }
+
         return tableDataTestList;
     }
 

@@ -14,6 +14,6 @@ public class AuthController {
         if (Boolean.TRUE.equals(error)) {
             model.addAttribute("error", true);
         }
-        return "common/index";
+        return "adminUI1";
     }
 }

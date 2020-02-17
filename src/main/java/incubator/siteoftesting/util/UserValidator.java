@@ -22,9 +22,7 @@ public class UserValidator implements Validator {
     public void validate(Object target, Errors errors) {
         User user = (User) target;
         if (userService.getUserByLogin(user.getLogin()) != null) {
-            errors.rejectValue(
-                    "email", "", "This email is already in use"
-            );
+            errors.rejectValue("email", "", "This email is already in use");
         }
     }
 }

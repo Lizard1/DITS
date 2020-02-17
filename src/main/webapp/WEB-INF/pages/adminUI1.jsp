@@ -32,6 +32,3 @@
 </div>
 </body>
 </html>
-
-<%--<c:url value="/account/${account.id}" var="accountId"/>--%>
-<%--<a href="${accountId}">Got to account</a>--%>

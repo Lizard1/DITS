@@ -1,6 +1,7 @@
 package incubator.siteoftesting.config;
 
 import incubator.siteoftesting.security.AuthProviderImpl;
+import incubator.siteoftesting.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +9,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -20,8 +22,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
-                .antMatchers("/common/index").anonymous()
-                .antMatchers("/user/", "/common/index/").authenticated()
+                .antMatchers("/common/index").permitAll()
+                .antMatchers("/user**", "/common/index**").authenticated()
                 .and().csrf().disable()
                 .formLogin()
                 .loginPage("/common/index")
