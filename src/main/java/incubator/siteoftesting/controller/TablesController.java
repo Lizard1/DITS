@@ -17,7 +17,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/stat")
 public class TablesController {
 
     @Autowired
@@ -39,6 +39,20 @@ public class TablesController {
     public ModelAndView goToStatisticTest() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("adminUI6");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/statseven", method = RequestMethod.GET)
+    public ModelAndView goToSeven() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("adminUI7");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/statee", method = RequestMethod.GET)
+    public ModelAndView goToStatEghtn() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("adminUI8");
         return modelAndView;
     }
 
@@ -132,18 +146,6 @@ public class TablesController {
         return rightAnswers * 100 / certainTestAnswers;
     }
 
-    @RequestMapping(value = "/statseven", method = RequestMethod.GET)
-    public ModelAndView goToSeven() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("adminUI7");
-        return modelAndView;
-    }
 
-    @RequestMapping(value = "/statee", method = RequestMethod.GET)
-    public ModelAndView goToStatEghtn() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("adminUI8");
-        return modelAndView;
-    }
 
 }

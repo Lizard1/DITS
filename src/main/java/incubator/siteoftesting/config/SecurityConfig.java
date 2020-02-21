@@ -24,23 +24,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
-                .antMatchers("/index").anonymous()
-                //.antMatchers("/index/**").authenticated()
+                .antMatchers("/login").anonymous()
+                .antMatchers("/index/**", "/stat/**").authenticated()
+                .and().csrf().disable()
+                .formLogin().loginPage("/login").loginProcessingUrl("/login/process").usernameParameter("login")
+                .and().logout();
+
+        /*http.authorizeRequests()
+                .antMatchers("/login").anonymous()
+                .antMatchers("/index/**").authenticated()
                 .and().csrf().disable()
                 .formLogin()
-                //.loginPage("/index")
-              //  .loginProcessingUrl("/login/process")
+                .loginPage("/index")
+                .loginProcessingUrl("/login/process")
                 .usernameParameter("login")
                 .failureUrl("/login?error=true")
                 .and()
                 .exceptionHandling()
                 .accessDeniedPage("/index**")
                 .and()
-                .logout();
+                .logout();*/
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth){
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.authenticationProvider(authProvider);
     }
 

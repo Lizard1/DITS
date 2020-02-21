@@ -26,12 +26,12 @@
                     </p>
                 </div>
             </form>
-            <%--<c:if test="${isVisible == true}">--%>
-                <%--<p>Visible</p>--%>
-            <%--</c:if>--%>
-            <%--<c:if test="${isVisible == false}">--%>
-                <%--<p>Invisible</p>--%>
-            <%--</c:if>--%>
+            <c:if test="${error == true}">
+                <p>Visible</p>
+            </c:if>
+            <c:if test="${error == false}">
+                <p>Invisible</p>
+            </c:if>
             <a href="/logout">Logout</a>
         </div>
     </div>

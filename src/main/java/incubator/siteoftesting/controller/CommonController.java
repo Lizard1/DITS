@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/index")
 public class CommonController {
 
     @Autowired
@@ -35,33 +35,20 @@ public class CommonController {
     @Autowired
     private TopicService topicService;
 
-    @GetMapping("/")
-    public String toHello(){
-        return "redirect:/login";
-    }
-
-
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView hello() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("adminUI1");
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/index/menu", method = RequestMethod.GET)
+    @RequestMapping(value = "/menu", method = RequestMethod.GET)
     public ModelAndView goToMenu() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("adminUI2");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/index/creationt", method = RequestMethod.GET)
+    @RequestMapping(value = "/creationt", method = RequestMethod.GET)
     public ModelAndView goToCreationTest() {
         ModelAndView modelAndView = new ModelAndView("adminUI3", "crForm", new CreationForm());
         return modelAndView;
     }
 
-    @RequestMapping(value = "/index/creationu", method = RequestMethod.GET)
+    @RequestMapping(value = "/creationu", method = RequestMethod.GET)
     public ModelAndView goToCreationUser() {
         ModelAndView modelAndView = new ModelAndView("adminUI4", "formOfUser", new UserForm());
         return modelAndView;
@@ -74,7 +61,7 @@ public class CommonController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/index/creationt/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/creationt/create", method = RequestMethod.POST)
     public ModelAndView getDataForCreation(@ModelAttribute("crForm") CreationForm creationForm, ModelMap model) {
         model.addAttribute("topic", creationForm.getTopicFromCrFrom());
         model.addAttribute("test", creationForm.getTestFromCrForm());
