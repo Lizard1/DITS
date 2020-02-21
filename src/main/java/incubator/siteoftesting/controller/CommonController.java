@@ -1,11 +1,12 @@
 package incubator.siteoftesting.controller;
 
 
-import incubator.siteoftesting.model.*;
+import incubator.siteoftesting.model.Question;
+import incubator.siteoftesting.model.Test;
+import incubator.siteoftesting.model.Topic;
 import incubator.siteoftesting.model.additional.CreationForm;
 import incubator.siteoftesting.model.additional.UserForm;
 import incubator.siteoftesting.service.QuestionService;
-import incubator.siteoftesting.service.StatisticService;
 import incubator.siteoftesting.service.TestService;
 import incubator.siteoftesting.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +37,11 @@ public class CommonController {
 
     @GetMapping("/")
     public String toHello(){
-        return "redirect:/index";
+        return "redirect:/login";
     }
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView hello() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("adminUI1");

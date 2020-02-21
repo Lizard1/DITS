@@ -16,16 +16,23 @@
             <form action="/login/process" method="post">
                 <div class="form-group align-items-center">
                     <p>
-                        <input class="form-control bg-white text-info" type="text" id="login" placeholder="Логин или email" required>
+                        <input class="form-control bg-white text-info" type="text" name="login" id="login" placeholder="Логин или email" required>
                     </p>
                     <p>
-                        <input class="form-control bg-white text-info" type="password" id='password' placeholder="Пароль" required>
+                        <input class="form-control bg-white text-info" type="password" name="password" id='password' placeholder="Пароль" required>
                     </p>
                     <p>
                         <input  class="form-control text-white bg-primary" type="submit" name="submit" value="Войти">
                     </p>
                 </div>
             </form>
+            <%--<c:if test="${isVisible == true}">--%>
+                <%--<p>Visible</p>--%>
+            <%--</c:if>--%>
+            <%--<c:if test="${isVisible == false}">--%>
+                <%--<p>Invisible</p>--%>
+            <%--</c:if>--%>
+            <a href="/logout">Logout</a>
         </div>
     </div>
 
