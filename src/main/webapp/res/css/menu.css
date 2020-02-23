@@ -1,7 +1,17 @@
 #container{
     margin-top: 10%;
 }
-a{
+
+#logout{
+    font-size : 20px;
+    font-family: "Times New Roman";
+    font-weight: bolder;
+    text-decoration: none;
+    float: right;
+    margin: 1% 5%;
+}
+
+#menu a{
     color: #4e82be;
     font-size : 30px;
     font-family: "Times New Roman";

@@ -27,23 +27,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").anonymous()
                 .antMatchers("/index/**", "/stat/**").authenticated()
                 .and().csrf().disable()
-                .formLogin().loginPage("/login").loginProcessingUrl("/login/process").usernameParameter("login")
-                .and().logout();
-
-        /*http.authorizeRequests()
-                .antMatchers("/login").anonymous()
-                .antMatchers("/index/**").authenticated()
-                .and().csrf().disable()
                 .formLogin()
-                .loginPage("/index")
+                .loginPage("/login")
                 .loginProcessingUrl("/login/process")
                 .usernameParameter("login")
                 .failureUrl("/login?error=true")
                 .and()
                 .exceptionHandling()
-                .accessDeniedPage("/index**")
-                .and()
-                .logout();*/
+                .accessDeniedPage("/index/menu")
+                .and().logout();
     }
 
     @Override

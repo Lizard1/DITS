@@ -3,12 +3,16 @@
 <html>
 <head>
     <link href="<c:url value="/res/css/menu.css"/>" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Title</title>
 </head>
 <body>
-
+<header>
+    <a class="text-primary" id="logout" href="/logout">Logout</a>
+</header>
 <div class="container">
+
     <div class="row align-items-center justify-content-center">
         <div id="incub" class="col-5">
             <img src="/res/images/human.png">
@@ -24,7 +28,9 @@
             <p>
                 <a href="<c:url value="/index/statistic"/>">Статистика</a>
             </p>
-            <p><button class="btn text-white bg-primary" onclick='history.back()'>Назад</button></p>
+            <p>
+                <button class="btn text-white bg-primary" onclick='history.back()'>Назад</button>
+            </p>
         </div>
     </div>
 

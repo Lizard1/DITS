@@ -26,13 +26,9 @@
                     </p>
                 </div>
             </form>
-            <c:if test="${error == true}">
-                <p>Visible</p>
+            <c:if test="${errorAuth == true}">
+                <p>Bad credentials</p>
             </c:if>
-            <c:if test="${error == false}">
-                <p>Invisible</p>
-            </c:if>
-            <a href="/logout">Logout</a>
         </div>
     </div>
 
