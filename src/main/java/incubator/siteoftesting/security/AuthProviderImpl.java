@@ -30,16 +30,17 @@ public class AuthProviderImpl implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         User user = userService.getUserByLogin(authentication.getName());
 
-        if(user == null){
+        if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }
-        String password = authentication.getCredentials().toString();
-        //if(!passwordEncoder.matches(password, user.getPassword())){
-        if(!password.equals(user.getPassword())){
+        String passwordFromUser = authentication.getCredentials().toString();
+        //if(!password.equals(user.getPassword())){
+        // if(!passwordEncoder.matches(password, user.getPassword())){
+        if (passwordEncoder.matches(passwordFromUser,  user.getPassword())) {
             throw new BadCredentialsException("Bad credentials");
         }
         //внести пользователя, админа, преподавателя
-        List<GrantedAuthority>  authorities = new ArrayList<>();
+        List<GrantedAuthority> authorities = new ArrayList<>();
         return new UsernamePasswordAuthenticationToken(user, null, authorities);
     }
 

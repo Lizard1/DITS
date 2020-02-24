@@ -53,7 +53,7 @@ public class CommonController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/index/statistic", method = RequestMethod.GET)
+    @RequestMapping(value = "/statistic", method = RequestMethod.GET)
     public ModelAndView goToStatistic() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("adminUI5");

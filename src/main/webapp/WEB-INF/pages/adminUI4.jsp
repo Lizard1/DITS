@@ -19,7 +19,7 @@
             <img src="/res/images/human.png">
         </div>
         <div class="col-5">
-                <form:form method="POST" action="/user/addnewuser" modelAttribute="formOfUser">
+                <form:form method="POST" action="/addnewuser" modelAttribute="formOfUser">
                     <div class="form-group">
                         <p><form:select path="roleFromForm" class="form-control bg-white text-info">
                             <form:options items="${roleList}"/>
