@@ -10,10 +10,9 @@
     <title>Title</title>
 </head>
 <body>
-<header>
-    <a href="/logout">Logout</a>
-</header>
-
+<div class="row nav justify-content-end">
+    <div class="col-12"><a class="text-primary" id="logout" href="/logout">Logout</a></div>
+</div>
 <div class="container">
     <div class="row align-items-center justify-content-center">
         <div id="incub" class="col-5">

@@ -1,40 +1,16 @@
-/*select{*/
-    /*font-family: 'Arial';*/
-    /*display: inline-block;*/
-    /*max-width: 100%;*/
-    /*min-width: 40%;*/
-    /*cursor: pointer;*/
-    /*padding: 10px 15px;*/
-    /*outline: 0;*/
-    /*border: 3px solid #4e82be;*/
-    /*border-radius: 12px;*/
-    /*background: #ffffff;*/
-    /*color: #4e82be;*/
-    /*appearance: none;*/
-    /*-webkit-appearance: none;*/
-    /*-moz-appearance: none;*/
-/*}*/
-/*input[type = "password"], input[type = "text"]{*/
-    /*border: 2px solid #4e82be;*/
-/*}*/
-/*select:hover,*/
-/*select:focus {*/
-    /*color: #4e82be;*/
-    /*background: #accdef;*/
-/*}*/
-/*select:disabled {*/
-    /*opacity: 0.5;*/
-    /*pointer-events: none;*/
-/*}*/
-
-/*input[type = "submit"]{*/
-    /*display: inline-block;*/
-    /*text-align: center;*/
-    /*border : solid 3px #0282ea;*/
-    /*border-radius : 6px;*/
-    /*moz-border-radius : 6px;*/
-    /*font-size : 20px;*/
-    /*color : #ffffff;*/
-    /*padding : 5px 20px;*/
-    /*background-color : #0a66c9;*/
-/*}*/
+#logout{
+    font-size : 20px;
+    font-family: "Times New Roman";
+    font-weight: bolder;
+    text-decoration: none;
+    float: right;
+    margin: 1% 5%;
+}
+#logout{
+    font-size : 20px;
+    font-family: "Times New Roman";
+    font-weight: bolder;
+    text-decoration: none;
+    float: right;
+    margin: 1% 5%;
+}

@@ -5,12 +5,13 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="<c:url value="/res/css/forLogOut.css"/>" rel="stylesheet" type="text/css"/>
     <title>Title</title>
 </head>
 <body>
-<header>
-    <a href="/logout">Logout</a>
-</header>
+<div class="row nav justify-content-end">
+    <div class="col-12"><a class="text-primary" id="logout" href="/logout">Logout</a></div>
+</div>
 <div class="container">
     <div class="row align-items-center justify-content-center">
         <div id="incub" class="col-5">

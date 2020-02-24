@@ -25,3 +25,12 @@ tr:nth-child(odd) {
 tr:nth-child(even) {
     background: #E8E6D1;
 }
+
+#logout{
+    font-size : 20px;
+    font-family: "Times New Roman";
+    font-weight: bolder;
+    text-decoration: none;
+    float: right;
+    margin: 1% 5%;
+}
