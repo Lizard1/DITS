@@ -23,6 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
+        //hasAuthority("ADMIN")
         http.authorizeRequests()
                 .antMatchers("/login").anonymous()
                 .antMatchers("/index/**", "/stat/**").authenticated()
@@ -40,6 +41,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+        auth
+                .inMemoryAuthentication()
+                .withUser("memory_user").password("password").roles("USER").and()
+                .withUser("memory_admin").password("password").roles("USER", "ADMIN");
         auth.authenticationProvider(authProvider);
     }
 

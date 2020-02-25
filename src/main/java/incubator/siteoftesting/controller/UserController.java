@@ -18,16 +18,11 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/")
 public class UserController {
 
+    @Autowired
     private UserService userService;
 
     @Autowired
     private UserValidator userValidator;
-
-    @Autowired
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
-
 
     @RequestMapping(value = "/addnewuser", method = RequestMethod.POST)
     public ModelAndView addUser(@ModelAttribute("formOfUser") UserForm userForm, ModelMap model, BindingResult result) {

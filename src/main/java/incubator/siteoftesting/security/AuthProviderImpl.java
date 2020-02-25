@@ -1,6 +1,7 @@
 package incubator.siteoftesting.security;
 
 import incubator.siteoftesting.dao.UserDao;
+import incubator.siteoftesting.model.Role;
 import incubator.siteoftesting.model.User;
 import incubator.siteoftesting.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,15 +35,31 @@ public class AuthProviderImpl implements AuthenticationProvider {
             throw new UsernameNotFoundException("User not found");
         }
         String passwordFromUser = authentication.getCredentials().toString();
-        //if(!password.equals(user.getPassword())){
-        // if(!passwordEncoder.matches(password, user.getPassword())){
-        if (passwordEncoder.matches(passwordFromUser,  user.getPassword())) {
+        if (!passwordEncoder.matches(passwordFromUser,  user.getPassword())) {
             throw new BadCredentialsException("Bad credentials");
         }
-        //внести пользователя, админа, преподавателя
+        Role role = user.getRole();
+        //GrantedAuthority authority = getAuthority(user.getRole());
         List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new GrantedAut)
         return new UsernamePasswordAuthenticationToken(user, null, authorities);
     }
+
+    private String getAuthority(Role role){
+        String authority = "";
+        if(role.getAdmin()==1 && role.getTutor() == 0 && role.getUser() == 0){
+            authority = "ROLE_ADMIN";
+        }else if(role.getAdmin()==0 && role.getTutor() == 1 && role.getUser() == 0){
+            authority = "ROLE_TUTOR";
+        }else if(role.getAdmin()==0 && role.getTutor() == 0 && role.getUser() == 1){
+            authority = "ROLE_USER";
+        }
+        else{
+            authority = "ROLE_ANONYMOUS";
+        }
+        return authority;
+    }
+
 
     @Override
     public boolean supports(Class<?> aClass) {

@@ -145,7 +145,4 @@ public class TablesController {
         int certainTestAnswers = (int) answers.stream().filter(x -> x.getQuestionA().getTest().getTestId() == test.getTestId()).count();
         return rightAnswers * 100 / certainTestAnswers;
     }
-
-
-
 }
