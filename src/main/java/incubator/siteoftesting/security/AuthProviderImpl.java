@@ -11,6 +11,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -35,26 +36,24 @@ public class AuthProviderImpl implements AuthenticationProvider {
             throw new UsernameNotFoundException("User not found");
         }
         String passwordFromUser = authentication.getCredentials().toString();
-        if (!passwordEncoder.matches(passwordFromUser,  user.getPassword())) {
+        if (!passwordEncoder.matches(passwordFromUser, user.getPassword())) {
             throw new BadCredentialsException("Bad credentials");
         }
-        Role role = user.getRole();
-        //GrantedAuthority authority = getAuthority(user.getRole());
+
         List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new GrantedAut)
+        authorities.add(new SimpleGrantedAuthority( getAuthority(user.getRole())));
         return new UsernamePasswordAuthenticationToken(user, null, authorities);
     }
 
-    private String getAuthority(Role role){
+    private String getAuthority(Role role) {
         String authority = "";
-        if(role.getAdmin()==1 && role.getTutor() == 0 && role.getUser() == 0){
+        if (role.getAdmin() == 1 && role.getTutor() == 0 && role.getUser() == 0) {
             authority = "ROLE_ADMIN";
-        }else if(role.getAdmin()==0 && role.getTutor() == 1 && role.getUser() == 0){
+        } else if (role.getAdmin() == 0 && role.getTutor() == 1 && role.getUser() == 0) {
             authority = "ROLE_TUTOR";
-        }else if(role.getAdmin()==0 && role.getTutor() == 0 && role.getUser() == 1){
+        } else if (role.getAdmin() == 0 && role.getTutor() == 0 && role.getUser() == 1) {
             authority = "ROLE_USER";
-        }
-        else{
+        } else {
             authority = "ROLE_ANONYMOUS";
         }
         return authority;

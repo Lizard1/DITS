@@ -1331,12 +1331,12 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="328" parent="289" name="questionId">
+    <column id="328" parent="289" name="userId">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="329" parent="289" name="userId">
+    <column id="329" parent="289" name="questionId">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
@@ -1346,12 +1346,12 @@
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="331" parent="289" name="statistic_qustion_fk">
-      <ColNames>questionId</ColNames>
+    <index id="331" parent="289" name="statistic_user_fk">
+      <ColNames>userId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="332" parent="289" name="statistic_user_fk">
-      <ColNames>userId</ColNames>
+    <index id="332" parent="289" name="statistic_qustion_fk">
+      <ColNames>questionId</ColNames>
       <Type>btree</Type>
     </index>
     <index id="333" parent="289" name="statistic_test_fk">
@@ -1363,17 +1363,17 @@
       <ColNames>statisticId</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="335" parent="289" name="statistic_qustion_fk">
-      <ColNames>questionId</ColNames>
-      <RefSchemaName>statistic_user_role</RefSchemaName>
-      <RefTableName>question</RefTableName>
-      <RefColNames>questionId</RefColNames>
-    </foreign-key>
-    <foreign-key id="336" parent="289" name="statistic_user_fk">
+    <foreign-key id="335" parent="289" name="statistic_user_fk">
       <ColNames>userId</ColNames>
       <RefSchemaName>statistic_user_role</RefSchemaName>
       <RefTableName>usser</RefTableName>
       <RefColNames>userId</RefColNames>
+    </foreign-key>
+    <foreign-key id="336" parent="289" name="statistic_qustion_fk">
+      <ColNames>questionId</ColNames>
+      <RefSchemaName>statistic_user_role</RefSchemaName>
+      <RefTableName>question</RefTableName>
+      <RefColNames>questionId</RefColNames>
     </foreign-key>
     <foreign-key id="337" parent="289" name="statistic_test_fk">
       <ColNames>testId</ColNames>
@@ -1428,7 +1428,7 @@
     </column>
     <column id="346" parent="291" name="desccription">
       <Position>2</Position>
-      <DataType>binary(16)|0s</DataType>
+      <DataType>binary(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="347" parent="291" name="name">
@@ -1470,6 +1470,7 @@
     <column id="353" parent="292" name="pasword">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="354" parent="292" name="ruleId">
@@ -1477,50 +1478,46 @@
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="355" parent="292" name="namerow">
-      <Position>7</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="356" parent="292" name="login">
+    <index id="355" parent="292" name="login">
       <ColNames>login</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="357" parent="292" name="pasword">
+    <index id="356" parent="292" name="pasword">
       <ColNames>pasword</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="358" parent="292" name="user_rule_fk">
+    <index id="357" parent="292" name="user_rule_fk">
       <ColNames>ruleId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="359" parent="292" name="PRIMARY">
+    <key id="358" parent="292" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userId</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="360" parent="292" name="login">
+    <key id="359" parent="292" name="login">
       <ColNames>login</ColNames>
       <UnderlyingIndexName>login</UnderlyingIndexName>
     </key>
-    <key id="361" parent="292" name="pasword">
+    <key id="360" parent="292" name="pasword">
       <ColNames>pasword</ColNames>
       <UnderlyingIndexName>pasword</UnderlyingIndexName>
     </key>
-    <foreign-key id="362" parent="292" name="user_rule_fk">
+    <foreign-key id="361" parent="292" name="user_rule_fk">
       <ColNames>ruleId</ColNames>
       <RefSchemaName>statistic_user_role</RefSchemaName>
       <RefTableName>rule</RefTableName>
       <RefColNames>ruleId</RefColNames>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <argument id="363" parent="293" name="ending_value">
+    <argument id="362" parent="293" name="ending_value">
       <Position>1</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>int(11)|0s</DataType>
     </argument>
-    <argument id="364" parent="294" name="param1">
+    <argument id="363" parent="294" name="param1">
       <Position>1</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>int(11)|0s</DataType>
