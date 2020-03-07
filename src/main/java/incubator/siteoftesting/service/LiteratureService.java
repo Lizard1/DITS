@@ -1,6 +1,7 @@
 package incubator.siteoftesting.service;
 
 import incubator.siteoftesting.model.Literature;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

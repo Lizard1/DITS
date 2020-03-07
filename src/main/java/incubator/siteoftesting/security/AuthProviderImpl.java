@@ -42,19 +42,20 @@ public class AuthProviderImpl implements AuthenticationProvider {
 
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority( getAuthority(user.getRole())));
+
         return new UsernamePasswordAuthenticationToken(user, null, authorities);
     }
 
     private String getAuthority(Role role) {
-        String authority = "";
+        String authority;
         if (role.getAdmin() == 1 && role.getTutor() == 0 && role.getUser() == 0) {
-            authority = "ROLE_ADMIN";
+            authority = "ADMIN";
         } else if (role.getAdmin() == 0 && role.getTutor() == 1 && role.getUser() == 0) {
-            authority = "ROLE_TUTOR";
+            authority = "TUTOR";
         } else if (role.getAdmin() == 0 && role.getTutor() == 0 && role.getUser() == 1) {
-            authority = "ROLE_USER";
+            authority = "USER";
         } else {
-            authority = "ROLE_ANONYMOUS";
+            authority = "ANONYMOUS";
         }
         return authority;
     }

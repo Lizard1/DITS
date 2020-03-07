@@ -2,8 +2,6 @@ package incubator.siteoftesting.model;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "statistic")

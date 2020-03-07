@@ -1,9 +1,9 @@
 package incubator.siteoftesting.service;
 
 import incubator.siteoftesting.model.Statistic;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
 
 public interface StatisticService {
     List<Statistic> getAllStatistics();

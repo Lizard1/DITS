@@ -34,6 +34,6 @@ public class TestConnection {
             e.printStackTrace();
             flag = false;
         }
-        Assert.assertTrue(true);
+        Assert.assertTrue(flag);
     }
 }

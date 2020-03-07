@@ -19,7 +19,6 @@ public class QuestionDaoImpl implements QuestionDao {
         this.sessionFactory = sessionFactory;
     }
 
-
     @Override
     public List<Question> findAllQuestions() {
         Session session = sessionFactory.getCurrentSession();

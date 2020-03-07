@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.*;
-import java.util.function.Function;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
@@ -67,7 +67,6 @@ public class TablesController {
             tableDataTest.setPercentRight(getPercentRightAnswersTest(t));
             tableDataTestList.add(tableDataTest);
         }
-
         return tableDataTestList;
     }
 
@@ -87,14 +86,18 @@ public class TablesController {
 
     @ModelAttribute("tableDataUser")
     public List<TableDataUser> getTableDataUser() {
-        List<User> users = userService.getAllUsers();
+        List<User> users = userService.getAllUsers().stream()
+             .filter(x -> x.getRole().getAdmin() == 0 && x.getRole().getTutor() == 0 && x.getRole().getUser() == 1)
+                .collect(Collectors.toCollection(ArrayList::new));
         List<TableDataUser> tableDataUsers = new ArrayList<>();
         for (User u : users) {
             TableDataUser tableDataUser = new TableDataUser();
             tableDataUser.setUser(u);
-            tableDataUser.setNameTest(getNameTestForUser(u));
-            tableDataUser.setCountPassed(getCountOfTimePassedTestsByUser(u));
-            tableDataUser.setPercentPassed(getPercentRightAnswersUser(u));
+            if(!u.getStatisticUser().isEmpty()){
+                tableDataUser.setNameTest(getNameTestForUser(u));
+                tableDataUser.setCountPassed(getCountOfTimePassedTestsByUser(u));
+                tableDataUser.setPercentPassed(getPercentRightAnswersUser(u));
+            }
             tableDataUsers.add(tableDataUser);
         }
         return tableDataUsers;
@@ -111,7 +114,19 @@ public class TablesController {
         int count = (int) statistics.stream().filter(s -> s.getTestS().getTestId() == t.getTestId()).count();
         return count;
     }
+    private double getPercentRightAnswersTest(Test test) {
+        List<Answer> answers = answerService.getAllAnswers();
+        int rightAnswers = (int) answers.stream().filter(x -> x.getCorrect() == 1 && x.getQuestionA().getTest().getTestId() == test.getTestId()).count();
+        int certainTestAnswers = (int) answers.stream().filter(x -> x.getQuestionA().getTest().getTestId() == test.getTestId()).count();
+        return rightAnswers * 100 / certainTestAnswers;
+    }
 
+    private double getPercentRightAnswersQuestion(Question question) {
+        List<Statistic> statistics = statisticService.getAllStatistics();
+        int rightAnswers = (int) statistics.stream().filter(s -> s.isCorrect() && s.getQuestion().getQuestionId() == question.getQuestionId()).count();
+        int certainQuestionAnswers = (int) statistics.stream().filter(s -> s.getQuestion().getQuestionId() == question.getQuestionId()).count();
+        return rightAnswers * 100 / certainQuestionAnswers;
+    }
 
     public int getCountOfTimePassedTestsByUser(User u) {
         List<Statistic> stats = statisticService.getAllStatistics().stream().filter(s -> s.getUserStat().getUserId() == u.getUserId()).collect(Collectors.toList());
@@ -132,17 +147,6 @@ public class TablesController {
         return rightAnswers * 100 / certainQuestionAnswers;
     }
 
-    private double getPercentRightAnswersQuestion(Question question) {
-        List<Statistic> statistics = statisticService.getAllStatistics();
-        int rightAnswers = (int) statistics.stream().filter(s -> s.isCorrect() && s.getQuestion().getQuestionId() == question.getQuestionId()).count();
-        int certainQuestionAnswers = (int) statistics.stream().filter(s -> s.getQuestion().getQuestionId() == question.getQuestionId()).count();
-        return rightAnswers * 100 / certainQuestionAnswers;
-    }
 
-    private double getPercentRightAnswersTest(Test test) {
-        List<Answer> answers = answerService.getAllAnswers();
-        int rightAnswers = (int) answers.stream().filter(x -> x.getCorrect() == 1 && x.getQuestionA().getTest().getTestId() == test.getTestId()).count();
-        int certainTestAnswers = (int) answers.stream().filter(x -> x.getQuestionA().getTest().getTestId() == test.getTestId()).count();
-        return rightAnswers * 100 / certainTestAnswers;
-    }
+
 }

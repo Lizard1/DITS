@@ -17,7 +17,7 @@
         </div>
 
         <div id="menu" class="col-5">
-            <p><a href="<c:url value="/stat/statistictest" />">Статистика оп тесту</a></p>
+            <p><a href="<c:url value="/stat/statistictest" />">Статистика по тесту</a></p>
             <p><a href="<c:url value="/stat/statseven" />">Статистика по вопросам</a></p>
             <p><a href="<c:url value="/stat/statee" />">Статистика пользователей</a></p>
             <p><button class="btn text-white bg-primary" onclick='history.back()'>Назад</button></p>
