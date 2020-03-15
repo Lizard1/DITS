@@ -18,7 +18,8 @@
         </div>
 
         <div id="menu" class="col-5">
-            <p><a href="<c:url value="/index/statistic"/>">Статистика</a></p>
+            <p><a href="<c:url value="/index/creationt"/>">Создать тест</a></p>
+            <p><a href="<c:url value="/index/creationu"/>">Создать пользователя</a></p>
             <p><button class="btn text-white bg-primary" onclick='history.back()'>Назад</button></p>
         </div>
 

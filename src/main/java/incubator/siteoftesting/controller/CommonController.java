@@ -34,10 +34,24 @@ public class CommonController {
     @Autowired
     private TopicService topicService;
 
-    @RequestMapping(value = "/menu", method = RequestMethod.GET)
+    @RequestMapping(value = "/denied", method = RequestMethod.GET)
+    public ModelAndView goToForbidden() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("accessDenied");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/menututor", method = RequestMethod.GET)
     public ModelAndView goToMenu() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("adminUI2");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/menuadmin", method = RequestMethod.GET)
+    public ModelAndView goToMenuAdmin() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("adminUI2.1");
         return modelAndView;
     }
 

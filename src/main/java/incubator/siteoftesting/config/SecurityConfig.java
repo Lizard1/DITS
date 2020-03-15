@@ -23,21 +23,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-        //hasAuthority("ADMIN")
         http.authorizeRequests()
                 .antMatchers("/login").anonymous()
-                .antMatchers("/index/creationt", "/index/creationu").hasAuthority("ADMIN")
-                .antMatchers("/stat/**").hasAuthority("TUTOR")
+                .antMatchers("/index/menuadmin", "/index/creationt", "/index/creationt", "/index/creationu", "/index/creationt/create").hasAuthority("ADMIN")
+                .antMatchers("/index/statistic", "/stat/statistictest", "/stat/statseven", "/stat/statee").hasAuthority("TUTOR")
                 .and()
-                .csrf().disable()
-                .formLogin()
-                .loginPage("/login")
-                .loginProcessingUrl("/login/process")
-                .usernameParameter("login")
-                .failureUrl("/login?error=true")
+                    .csrf().disable()
+                    .formLogin()
+                    .loginPage("/login")
+                    .loginProcessingUrl("/login/process")
+                    .usernameParameter("login")
+                    .failureUrl("/login?error=true")
                 .and()
-                .exceptionHandling()
-                .accessDeniedPage("/index/menu")
+                    .exceptionHandling()
+                    .accessDeniedPage("/index/menuadmin")
                 .and().logout();
     }
 
