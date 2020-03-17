@@ -9,3 +9,7 @@ input[type = "password"], input[type = "text"], select{
     float: right;
     margin: 1% 5%;
 }
+
+#back{
+    text-decoration: none;
+}

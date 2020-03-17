@@ -16,12 +16,18 @@
             <img src="/res/images/human.png">
         </div>
 
-        <div id="menu" class="col-5">
-            <p><a href="<c:url value="/stat/statistictest" />">Статистика по тесту</a></p>
-            <p><a href="<c:url value="/stat/statseven" />">Статистика по вопросам</a></p>
-            <p><a href="<c:url value="/stat/statee" />">Статистика пользователей</a></p>
-            <p><button class="btn text-white bg-primary" onclick='history.back()'>Назад</button></p>
+        <div class="col-5">
+            <p><a class="menu" href="<c:url value="/stat/statistictest" />">Статистика по тесту</a></p>
+            <p><a class="menu" href="<c:url value="/stat/statseven" />">Статистика по вопросам</a></p>
+            <p><a class="menu" href="<c:url value="/stat/statee" />">Статистика пользователей</a></p>
+            <p>
+                <button class="btn bg-primary">
+                    <a id="back" href='<c:url value="/index/menu"/>' class="text-white">Назад</a>
+                </button>
+            </p>
         </div>
+
+
     </div>
 </div>
 </body>

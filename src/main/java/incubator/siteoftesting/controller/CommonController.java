@@ -1,6 +1,5 @@
 package incubator.siteoftesting.controller;
 
-
 import incubator.siteoftesting.model.Question;
 import incubator.siteoftesting.model.Test;
 import incubator.siteoftesting.model.Topic;
@@ -41,17 +40,10 @@ public class CommonController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/menututor", method = RequestMethod.GET)
+    @RequestMapping(value = "/menu", method = RequestMethod.GET)
     public ModelAndView goToMenu() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("adminUI2");
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/menuadmin", method = RequestMethod.GET)
-    public ModelAndView goToMenuAdmin() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("adminUI2.1");
         return modelAndView;
     }
 
@@ -86,8 +78,15 @@ public class CommonController {
         boolean questionLogic = !creationForm.getQuestionFromCrForm().isEmpty();
 
         if (questionLogic && testLogic && topicLogic) {
+            Topic topic = new Topic();
+            Test test = new Test();
             Question question = new Question();
+
+            topic.setName(creationForm.getTopicFromCrFrom());
+            test.setName(creationForm.getTestFromCrForm());
+            test.setTopic(topic);
             question.setDescription(creationForm.getQuestionFromCrForm());
+            question.setTest(test);
             questionService.createQuestion(question);
         } else if (testLogic && topicLogic) {
             Test test = new Test();

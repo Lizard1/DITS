@@ -39,6 +39,11 @@
                         <p><input class="form-control text-white bg-primary" type="submit" value="Сохранить"/></p>
                     </div>
                 </form:form>
+            <p>
+                <button class="btn bg-primary">
+                    <a id="back" href='<c:url value="/index/menu" />' class="text-white">Назад</a>
+                </button>
+            </p>
         </div>
     </div>
 </div>

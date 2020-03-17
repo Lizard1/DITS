@@ -41,10 +41,11 @@
                             </c:forEach>
                     </datalist>
                 </p>
-
                 <p><input class="form-control text-white bg-primary" type="submit" name="submit" value="Сохранить"></p>
                 <p>
-                    <button class="btn text-white bg-primary" onclick='history.back()'>Назад</button>
+                    <button class="btn bg-primary">
+                        <a id="alog" href='<c:url value="/index/menu" />' class="text-white">Назад</a>
+                    </button>
                 </p>
             </div>
         </form:form>

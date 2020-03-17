@@ -36,7 +36,9 @@
             </table>
             </p>
             <p>
-                <button class="btn text-white bg-primary" onclick='history.back()'>Назад</button>
+                <button class="btn bg-primary">
+                    <a href='<c:url value="/index/statistic" />' class="text-white">Назад</a>
+                </button>
             </p>
         </div>
     </div>

@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
                 .antMatchers("/login").anonymous()
-                .antMatchers("/index/menuadmin", "/index/creationt", "/index/creationt", "/index/creationu", "/index/creationt/create").hasAuthority("ADMIN")
+                .antMatchers("/index/menu", "/index/creationt", "/index/creationt", "/index/creationu", "/index/creationt/create").hasAuthority("ADMIN")
                 .antMatchers("/index/statistic", "/stat/statistictest", "/stat/statseven", "/stat/statee").hasAuthority("TUTOR")
                 .and()
                     .csrf().disable()
@@ -36,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .failureUrl("/login?error=true")
                 .and()
                     .exceptionHandling()
-                    .accessDeniedPage("/index/menuadmin")
+                    .accessDeniedPage("/index/menu")
                 .and().logout();
     }
 

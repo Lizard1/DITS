@@ -56,21 +56,23 @@ public class TablesController {
         return modelAndView;
     }
 
-    @ModelAttribute("table")
+    @ModelAttribute("table")//по тестам
     public List<TableDataTest> getTableData() {
         List<Test> tests = testService.getAllTests();
         List<TableDataTest> tableDataTestList = new ArrayList<>();
         for (Test t : tests) {
             TableDataTest tableDataTest = new TableDataTest();
             tableDataTest.setTest(t);
-            tableDataTest.setCountPassed(getCountOfTimePassedTests(t));
+            tableDataTest.setCountPassed(getCountOfTimePassedTest(t));
             tableDataTest.setPercentRight(getPercentRightAnswersTest(t));
-            tableDataTestList.add(tableDataTest);
+            if (tableDataTest.getCountPassed() != 0) {
+                tableDataTestList.add(tableDataTest);
+            }
         }
         return tableDataTestList;
     }
 
-    @ModelAttribute("tableQuestion")
+    @ModelAttribute("tableQuestion")// по вопросам
     public List<TableDataQuestion> getTableDataQuestion() {
         List<Question> questions = questionService.getAllQuestions();
         List<TableDataQuestion> tableDataQuestions = new ArrayList<>();
@@ -79,26 +81,30 @@ public class TablesController {
             tableDataQuestion.setQuestion(q);
             tableDataQuestion.setCountPassed(getCountOfTimePassedQuestions(q));
             tableDataQuestion.setPercentRight(getPercentRightAnswersQuestion(q));
-            tableDataQuestions.add(tableDataQuestion);
+            if (tableDataQuestion.getCountPassed() != 0) {
+                tableDataQuestions.add(tableDataQuestion);
+            }
         }
         return tableDataQuestions;
     }
 
-    @ModelAttribute("tableDataUser")
+    @ModelAttribute("tableDataUser")// по юзерам
     public List<TableDataUser> getTableDataUser() {
         List<User> users = userService.getAllUsers().stream()
-             .filter(x -> x.getRole().getAdmin() == 0 && x.getRole().getTutor() == 0 && x.getRole().getUser() == 1)
+                .filter(x -> x.getRole().getAdmin() == 0 && x.getRole().getTutor() == 0 && x.getRole().getUser() == 1)
                 .collect(Collectors.toCollection(ArrayList::new));
         List<TableDataUser> tableDataUsers = new ArrayList<>();
         for (User u : users) {
             TableDataUser tableDataUser = new TableDataUser();
             tableDataUser.setUser(u);
-            if(!u.getStatisticUser().isEmpty()){
+            if (!u.getStatisticUser().isEmpty()) {
                 tableDataUser.setNameTest(getNameTestForUser(u));
                 tableDataUser.setCountPassed(getCountOfTimePassedTestsByUser(u));
                 tableDataUser.setPercentPassed(getPercentRightAnswersUser(u));
             }
-            tableDataUsers.add(tableDataUser);
+            if(tableDataUser.getCountPassed() !=0){
+                tableDataUsers.add(tableDataUser);
+            }
         }
         return tableDataUsers;
     }
@@ -109,28 +115,32 @@ public class TablesController {
         return count;
     }
 
-    public int getCountOfTimePassedTests(Test t) {
+    public int getCountOfTimePassedTest(Test t) {
         List<Statistic> statistics = statisticService.getAllStatistics();
         int count = (int) statistics.stream().filter(s -> s.getTestS().getTestId() == t.getTestId()).count();
         return count;
     }
+
     private double getPercentRightAnswersTest(Test test) {
         List<Answer> answers = answerService.getAllAnswers();
         int rightAnswers = (int) answers.stream().filter(x -> x.getCorrect() == 1 && x.getQuestionA().getTest().getTestId() == test.getTestId()).count();
         int certainTestAnswers = (int) answers.stream().filter(x -> x.getQuestionA().getTest().getTestId() == test.getTestId()).count();
-        return rightAnswers * 100 / certainTestAnswers;
+        int result = (certainTestAnswers > 0) ? rightAnswers * 100 / certainTestAnswers : 0;
+        return result;
     }
 
     private double getPercentRightAnswersQuestion(Question question) {
         List<Statistic> statistics = statisticService.getAllStatistics();
         int rightAnswers = (int) statistics.stream().filter(s -> s.isCorrect() && s.getQuestion().getQuestionId() == question.getQuestionId()).count();
         int certainQuestionAnswers = (int) statistics.stream().filter(s -> s.getQuestion().getQuestionId() == question.getQuestionId()).count();
-        return rightAnswers * 100 / certainQuestionAnswers;
+        int result = (certainQuestionAnswers > 0) ? rightAnswers * 100 / certainQuestionAnswers : 0;
+        return result;
     }
 
     public int getCountOfTimePassedTestsByUser(User u) {
         List<Statistic> stats = statisticService.getAllStatistics().stream().filter(s -> s.getUserStat().getUserId() == u.getUserId()).collect(Collectors.toList());
-        return stats.stream().collect(Collectors.groupingBy(Statistic::getTestS, Collectors.counting())).size();
+        int result = stats.stream().collect(Collectors.groupingBy(Statistic::getTestS, Collectors.counting())).size();
+        return result;
     }
 
     private String getNameTestForUser(User user) {
@@ -144,9 +154,9 @@ public class TablesController {
         List<Statistic> statistics = statisticService.getAllStatistics();
         int rightAnswers = (int) statistics.stream().filter(s -> s.isCorrect() && s.getUserStat().getUserId() == user.getUserId()).count();
         int certainQuestionAnswers = (int) statistics.stream().map(s -> s.getQuestion().getQuestionId()).count();
-        return rightAnswers * 100 / certainQuestionAnswers;
+        int result = (certainQuestionAnswers > 0) ? rightAnswers * 100 / certainQuestionAnswers : 0;
+        return result;
     }
-
 
 
 }
