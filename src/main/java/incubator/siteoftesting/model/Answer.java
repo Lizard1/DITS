@@ -21,12 +21,6 @@ public class Answer {
     @JoinColumn(name = "questionId")
     private Question questionA;
 
-    public int ifCorrect() {
-        if (correct != 0 || correct < 0) {
-            return 1;
-        } else return 0;
-    }
-
     public Answer() {
     }
 
