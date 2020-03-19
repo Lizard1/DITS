@@ -11,11 +11,18 @@
     margin: 1% 5%;
 }
 
+
+
 .menu{
     color: #4e82be;
     font-size : 30px;
     font-family: "Times New Roman";
     font-weight: bolder;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    color: #0056b3;
     text-decoration: none;
 }
 
