@@ -25,18 +25,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
                 .antMatchers("/login").anonymous()
-                .antMatchers("/index/menu", "/index/creationt", "/index/creationt", "/index/creationu", "/index/creationt/create").hasAuthority("ADMIN")
-                .antMatchers("/index/statistic", "/stat/statistictest", "/stat/statseven", "/stat/statee").hasAuthority("TUTOR")
+                .antMatchers("/hello").authenticated()
+                .antMatchers("/admin/**", "stat/**").hasAuthority("ADMIN")
+                .antMatchers("/tutor/**").hasAuthority("TUTOR")
+                .antMatchers("/user/**").hasAuthority("USER")
                 .and()
                     .csrf().disable()
                     .formLogin()
                     .loginPage("/login")
+                    .defaultSuccessUrl("/hello")
                     .loginProcessingUrl("/login/process")
                     .usernameParameter("login")
-                    .failureUrl("/login?error=true")
-                .and()
-                    .exceptionHandling()
-                    .accessDeniedPage("/index/menu")
                 .and().logout();
     }
 
@@ -50,3 +49,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 }
+
+/*
+* http.authorizeRequests()
+                .antMatchers("/login").anonymous()
+                .antMatchers("/hello").authenticated()
+                .antMatchers("/admin/**", "stat/**").hasAuthority("ADMIN")
+                .antMatchers("/tutor/**").hasAuthority("TUTOR")
+                .antMatchers("/user/**").hasAuthority("USER")
+                .and()
+                    .csrf().disable()
+                    .formLogin()
+                    .loginPage("/login")
+                    .loginProcessingUrl("/login/process")
+                    .usernameParameter("login")
+                    .failureUrl("/login?error=true")
+                .and()
+                    .exceptionHandling()
+                    .accessDeniedPage("/denied")
+                .and().logout();
+*
+* */

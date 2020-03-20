@@ -1,4 +1,4 @@
-package incubator.siteoftesting.controller;
+package incubator.siteoftesting.controller.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

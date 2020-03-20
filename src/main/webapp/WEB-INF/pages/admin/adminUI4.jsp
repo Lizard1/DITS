@@ -41,7 +41,7 @@
                 </form:form>
             <p>
                 <button class="btn bg-primary">
-                    <a id="back" href='<c:url value="/index/menu" />' class="text-white">Назад</a>
+                    <a id="back" href='<c:url value="/admin/menu" />' class="text-white">Назад</a>
                 </button>
             </p>
         </div>

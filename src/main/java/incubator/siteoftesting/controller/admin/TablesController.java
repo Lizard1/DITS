@@ -1,4 +1,4 @@
-package incubator.siteoftesting.controller;
+package incubator.siteoftesting.controller.admin;
 
 import incubator.siteoftesting.model.*;
 import incubator.siteoftesting.model.additional.TableDataQuestion;
@@ -38,21 +38,21 @@ public class TablesController {
     @RequestMapping(value = "/statistictest", method = RequestMethod.GET)
     public ModelAndView goToStatisticTest() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("adminUI6");
+        modelAndView.setViewName("admin/adminUI6");
         return modelAndView;
     }
 
     @RequestMapping(value = "/statseven", method = RequestMethod.GET)
     public ModelAndView goToSeven() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("adminUI7");
+        modelAndView.setViewName("admin/adminUI7");
         return modelAndView;
     }
 
     @RequestMapping(value = "/statee", method = RequestMethod.GET)
     public ModelAndView goToStatEghtn() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("adminUI8");
+        modelAndView.setViewName("admin/adminUI8");
         return modelAndView;
     }
 

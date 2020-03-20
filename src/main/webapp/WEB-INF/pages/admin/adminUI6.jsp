@@ -37,7 +37,7 @@
             </p>
             <p>
                 <button class="btn bg-primary">
-                    <a href='<c:url value="/index/statistic" />' class="text-white">Назад</a>
+                    <a href='<c:url value="/admin/statistic" />' class="text-white">Назад</a>
                 </button>
             </p>
         </div>

@@ -44,7 +44,7 @@
                 <p><input class="form-control text-white bg-primary" type="submit" name="submit" value="Сохранить"></p>
                 <p>
                     <button class="btn bg-primary">
-                        <a id="alog" href='<c:url value="/index/menu" />' class="text-white">Назад</a>
+                        <a id="alog" href='<c:url value="/admin/menu" />' class="text-white">Назад</a>
                     </button>
                 </p>
             </div>

@@ -1,4 +1,4 @@
-package incubator.siteoftesting.controller;
+package incubator.siteoftesting.controller.admin;
 
 import incubator.siteoftesting.model.Role;
 import incubator.siteoftesting.model.User;
@@ -34,7 +34,7 @@ public class UserController {
         model.addAttribute("password", userForm.getPassword());
         model.addAttribute("email", userForm.getEmail());
 
-        ModelAndView modelAndView = new ModelAndView("adminUI4", "command", userForm);
+        ModelAndView modelAndView = new ModelAndView("admin/adminUI4", "command", userForm);
         User user = new User();
         user.setFirstName(userForm.getFirstName());
         user.setLastName(userForm.getLastName());

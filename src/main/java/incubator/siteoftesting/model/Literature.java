@@ -24,6 +24,15 @@ public class Literature {
     @JoinColumn(name = "questionId")
     private Question questionL;
 
+    public String getCasualLinks() {// для удобства, в одном месте надо было приводить
+        // ссыл// ки налитератруру
+        String str = "";
+        for (Link l : links) {
+            str += l.getLink() + "\n";
+        }
+        return str;
+    }
+
     public Literature() {
     }
 
