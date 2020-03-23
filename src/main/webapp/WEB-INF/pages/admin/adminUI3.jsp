@@ -18,7 +18,7 @@
             <img src="/res/images/human.png">
         </div>
 
-        <form:form method="POST" action="/index/creationt/create" modelAttribute="crForm" class="col-5">
+        <form:form method="POST" action="/admin/creationt/create" modelAttribute="crForm" class="col-5">
             <div class="form-group">
                 <p><form:input path="topicFromCrFrom" class="form-control" type="text" list="topics" placeholder="Выберите тему"/>
                     <datalist id="topics">
@@ -44,11 +44,14 @@
                 <p><input class="form-control text-white bg-primary" type="submit" name="submit" value="Сохранить"></p>
                 <p>
                     <button class="btn bg-primary">
-                        <a id="alog" href='<c:url value="/admin/menu" />' class="text-white">Назад</a>
+                        <a id="alog" href='<c:url value="/admin" />' class="text-white">Назад</a>
                     </button>
                 </p>
             </div>
         </form:form>
+        <c:if test="${errFill == true}">
+            <p id="err">Неверное заполнение.</p>
+        </c:if>
     </div>
 </div>
 </body>

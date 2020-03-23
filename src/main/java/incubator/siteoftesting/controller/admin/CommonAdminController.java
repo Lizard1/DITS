@@ -10,10 +10,12 @@ import incubator.siteoftesting.service.TestService;
 import incubator.siteoftesting.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
@@ -21,7 +23,6 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/admin")
 public class CommonAdminController {
 
     @Autowired
@@ -34,33 +35,33 @@ public class CommonAdminController {
     private TopicService topicService;
 
 
-    @RequestMapping(value = "/menu", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public ModelAndView goToMenu() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("adminUI2");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/creationt", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/creationt", method = RequestMethod.GET)
     public ModelAndView goToCreationTest() {
         ModelAndView modelAndView = new ModelAndView("admin/adminUI3", "crForm", new CreationForm());
         return modelAndView;
     }
 
-    @RequestMapping(value = "/creationu", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/creationu", method = RequestMethod.GET)
     public ModelAndView goToCreationUser() {
         ModelAndView modelAndView = new ModelAndView("admin/adminUI4", "formOfUser", new UserForm());
         return modelAndView;
     }
 
-    @RequestMapping(value = "/statistic", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/statistic", method = RequestMethod.GET)
     public ModelAndView goToStatistic() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("admin/adminUI5");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/creationt/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/creationt/create", method = RequestMethod.POST)
     public ModelAndView getDataForCreation(@ModelAttribute("crForm") CreationForm creationForm, ModelMap model) {
         model.addAttribute("topic", creationForm.getTopicFromCrFrom());
         model.addAttribute("test", creationForm.getTestFromCrForm());
@@ -93,8 +94,9 @@ public class CommonAdminController {
             Topic topic = new Topic();
             topic.setName(creationForm.getTopicFromCrFrom());
             topicService.createTopic(topic);
+        } else{
+            model.addAttribute("errFill", true);
         }
-
         return modelAndView;
     }
 

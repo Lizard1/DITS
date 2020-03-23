@@ -22,12 +22,12 @@
                         <input class="form-control bg-white text-info" type="password" name="password" id='password' placeholder="Пароль" required>
                     </p>
                     <p>
-                        <input  class="form-control text-white bg-primary" type="submit" name="submit" value="Войти">
+                        <input class="form-control text-white bg-primary" type="submit" name="submit" value="Войти">
                     </p>
                 </div>
             </form>
             <c:if test="${errorAuth == true}">
-                <p>Bad credentials</p>
+                <p id="err">Bad credentials</p>
             </c:if>
         </div>
     </div>

@@ -10,3 +10,7 @@
 #alog{
     text-decoration: none;
 }
+
+#err{
+    color: red;
+}

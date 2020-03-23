@@ -14,9 +14,4 @@ public class CommonController {
         modelAndView.setViewName("adminUI2");
      return "denied";
     }
-
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public String helloMenu() {
-        return "hello";
-    }
 }

@@ -173,3 +173,32 @@
 //    }
 //}
 
+
+  /*  public List<String> getAllUserNames(){
+        List<User> users = userService.getAllUsers();
+        List<String> names = new ArrayList<>();
+        for (User u: users) {
+            names.add(u.getFirstName());
+        }
+        return names;
+    }
+
+    public User getUserByUsername(String username) {
+        User outUser = new User();
+        if (getAllUserNames().contains(username)) {
+            List<User> users = userService.getAllUsers();
+            for (User u : users) {
+                if (u.getLogin().equals(username))
+                    outUser = u;
+            }
+        } else {
+            System.out.println("Неверное имя пользователя!");
+            throw new NullPointerException("Такой логин не найден в методе getUserByUsername");
+        }
+        return outUser;
+    }*/
+
+    /*
+     * This method extracts the roles of currently logged-in user and returns
+     * appropriate URL according to his/her role.
+     */
