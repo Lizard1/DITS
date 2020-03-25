@@ -14,12 +14,17 @@ public class CommonUserController {
 
     @RequestMapping(value = "/user/chooseTest", method = RequestMethod.GET)
     public String chooseTest() {
-        return "User/user";
+        return "User/user2";
+    }
+
+    @RequestMapping(value = "/user/goToTest", method = RequestMethod.GET)
+    public String getPersonalStat() {
+        return "User/user3";
     }
 
     @RequestMapping(value = "/user/personalStatistic", method = RequestMethod.GET)
-    public String getPersonalStat() {
-        return "User/user";
+    public String getStat() {
+        return "User/user4";
     }
 
 }

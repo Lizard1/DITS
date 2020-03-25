@@ -19,6 +19,10 @@ tr, td{
     margin: 0px 5px;
 }
 
+td{
+    min-width: 100px;
+    height: 30px;
+}
 tr:nth-child(odd) {
     background: white;
 }

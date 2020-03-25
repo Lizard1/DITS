@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="<c:url value="/res/css/menu.css"/>" rel="stylesheet" type="text/css"/>
@@ -18,11 +19,18 @@
         </div>
 
         <div class="col-5">
-            <p><a class="menu" href="<c:url value="/user/chooseTest" />">Выбор темы и теста</a></p>
-            <p><a class="menu" href="<c:url value="/user/personalStatistic" />">Личная статистика</a></p>
+            <p><a class="menu" href="<c:url value="/tutor/statitest" />">Статистика по тесту</a></p>
+            <p><a class="menu" href="<c:url value="/tutor/statq" />">Статистика по вопросам</a></p>
+            <p><a class="menu" href="<c:url value="/tutor/statu" />">Статистика пользователей</a></p>
+            <p>
+                <button class="btn bg-primary">
+                    <a id="alog" href='<c:url value="/tutor" />' class="text-white">Назад</a>
+                </button>
+            </p>
         </div>
+
+
     </div>
 </div>
-
 </body>
 </html>

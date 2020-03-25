@@ -18,9 +18,9 @@
         </div>
 
         <div class="col-5">
-            <p><a class="menu" href="<c:url value="#"/>">Редактировать тему/тест</a></p>
-            <p><a class="menu" href="<c:url value="#"/>">Редактировать вопросы/ответы</a></p>
-            <p><a class="menu" href="<c:url value="#"/>">Статистика</a></p>
+            <p><a class="menu" href="<c:url value="tutor/edittopictest"/>">Редактировать тему/тест</a></p>
+            <p><a class="menu" href="<c:url value="tutor/editquans"/>">Редактировать вопросы/ответы</a></p>
+            <p><a class="menu" href="<c:url value="tutor/statis"/>">Статистика</a></p>
         </div>
     </div>
 </div>

@@ -16,8 +16,9 @@
         <div id="incub" class="col">
             <figure>
                 <p><img  src="/res/images/human.png"/></p>
-                <figcaption>ТЫ НЕ ПРОЙДЕШЬ</figcaption>
+                <figcaption>Доступ закрыт</figcaption>
             </figure>
+            <button class="btn text-white bg-primary" onclick='history.back()'>Назад</button>
         </div>
     </div>
 </div>

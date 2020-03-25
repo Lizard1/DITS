@@ -16,13 +16,21 @@
         <div id="incub" class="col-5">
             <img src="/res/images/human.png">
         </div>
-
         <div class="col-5">
-            <p><a class="menu" href="<c:url value="/user/chooseTest" />">Выбор темы и теста</a></p>
-            <p><a class="menu" href="<c:url value="/user/personalStatistic" />">Личная статистика</a></p>
+            <form method="get" action="/user/goToTest">
+                <div class="form-group">
+                    <p><input class="form-control" type="text" placeholder="Название темы"/></p>
+                    <p><input class="form-control" type="text" placeholder="Название теста"/></p>
+                    <p><input class="form-control text-white bg-primary" type="submit" name="submit" value="Пройти тестирование"></p>
+                </div>
+            </form>
+            <div class="col-5 justify-content-md-center">
+                <button class="btn bg-primary">
+                    <a id="alog" href='<c:url value="/user" />' class="text-white">Назад</a>
+                </button>
+            </div>
         </div>
     </div>
 </div>
-
 </body>
 </html>
